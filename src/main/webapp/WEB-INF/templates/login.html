@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Signin Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{#{resource.bootstrap.css}}" rel="stylesheet"></link>
+
+<!-- Custom styles for this template -->
+<link th:href="@{/resources/css/login.css}" rel="stylesheet"></link>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script th:src="@{#{resource.html5shiv.js}}"></script>
+      <script th:src="@{#{resource.respond.js}}"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<div class="container">
+
+		<form class="form-signin" action="#" th:action="@{/security_check}"
+			method="post">
+			<fieldset>
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<input type="text" class="form-control" placeholder="Email address"
+					required="required" autofocus="autofocus" name="j_username"
+					id="j_username" /> <input type="password" class="form-control"
+					placeholder="Password" required="required" id="j_password"
+					name="j_password" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit"
+					id="submit">Sign in</button>
+			</fieldset>
+		</form>
+
+	</div>
+	<!-- /container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" th:src="@{#{resource.jquery.js}}"></script>
+	<script type="text/javascript" th:src="@{#{resource.bootstrap.js}}"></script>
+</body>
+</html>

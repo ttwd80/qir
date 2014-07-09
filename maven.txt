@@ -1,0 +1,3 @@
+run integration test using 
+mvn clean verify
+

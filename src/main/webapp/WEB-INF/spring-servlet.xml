@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="order" value="1" />
+	</bean>
+
+
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+		<property name="messageSource">
+			<ref bean="messageSource" />
+		</property>
+		<property name="additionalDialects">
+			<set>
+				<bean
+					class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+		<property name="commonMessages">
+			<util:properties location="classpath:resource.properties" />
+		</property>
+	</bean>
+
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+		<property name="cacheable" value="false" />
+	</bean>
+
+	<context:component-scan base-package="com.twistlet.qir.common.controller" />
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+
+	<mvc:view-controller path="/login" view-name="login" />
+	<mvc:view-controller path="/index" view-name="index" />
+	<mvc:view-controller path="/welcome" view-name="redirect:/index" />
+
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/webjars/" mapping="/webjars/**" />
+
+	<util:map id="roleLocationMap">
+		<entry key="ROLE_ADMIN" value="redirect:/admin/index" />
+		<entry key="ROLE_USER" value="redirect:/user/index" />
+	</util:map>
+
+</beans>
