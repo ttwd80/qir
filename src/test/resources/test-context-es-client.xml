@@ -7,5 +7,5 @@
 
 
 	<elasticsearch:node-client id="elasticsearch"
-		http-enabled="true" />
+		cluster-name="elasticsearch-test-cluster" http-enabled="true" />
 </beans>

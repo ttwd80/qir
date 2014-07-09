@@ -6,8 +6,8 @@
 		http://www.springframework.org/schema/data/elasticsearch http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.0.xsd">
 
 
-	<!-- <elasticsearch:transport-client id="elasticsearch" -->
-	<!-- cluster-nodes="localhost:9200" /> -->
-	<elasticsearch:node-client id="elasticsearch"
-		http-enabled="true" />
+	<elasticsearch:transport-client id="elasticsearch"
+		cluster-name="elasticsearch-cluster-1" />
+	<!-- <elasticsearch:node-client id="elasticsearch" -->
+	<!-- http-enabled="true" /> -->
 </beans>
