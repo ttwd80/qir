@@ -3,6 +3,9 @@ package com.twistlet.qir.common.model.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "user")
 public class User implements Serializable {
 
 	private String username;
