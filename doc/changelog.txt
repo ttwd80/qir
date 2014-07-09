@@ -1,0 +1,21 @@
+0.1.0
+can login
+-DONE-
+
+0.2.0
+user management
+- create new roles
+- edit roles description
+- remove empty roles
+- add/remove user to roles
+
+- edit name/details of current user
+- change password for current user
+- create new user 
+- search for other users 
+- change password for other users
+- edit name/details of other users
+- add/remove roles to users
+- delete other users
+
+

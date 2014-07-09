@@ -31,7 +31,17 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 		<property name="commonMessages">
-			<util:properties location="classpath:resource.properties" />
+			<ref bean="commonMessages" />
+		</property>
+	</bean>
+
+	<bean id="commonMessages"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<util:list>
+				<value>classpath:resource.properties</value>
+				<value>classpath:app.properties</value>
+			</util:list>
 		</property>
 	</bean>
 
