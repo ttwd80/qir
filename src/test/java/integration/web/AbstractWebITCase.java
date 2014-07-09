@@ -1,7 +1,5 @@
 package integration.web;
 
-import javax.sql.DataSource;
-
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -14,12 +12,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
+import com.twistlet.qir.common.model.service.DataInitService;
+
 @ContextConfiguration({ "classpath:selenium-test-spring-context.xml",
-		"classpath:qir-context-datasource.xml" })
+		"classpath:qir-context-es-config.xml",
+		"classpath:qir-context-es-client.xml",
+		"classpath:qir-context-es-data-init.xml" })
 public abstract class AbstractWebITCase extends
 		AbstractJUnit4SpringContextTests {
 
 	protected WebDriver webDriver;
+
+	@Autowired
+	private DataInitService dataInitService;
 
 	@Value("#{config['url.base']}")
 	protected String baseUrl;
@@ -27,12 +32,9 @@ public abstract class AbstractWebITCase extends
 	@Value("#{config['wait.element.seconds']}")
 	protected int secondsToWaitForElement;
 
-	@Autowired
-	protected DataSource dataSource;
-
 	@Before
 	public void initData() {
-		//TODO populate data
+		dataInitService.init();
 	}
 
 	@After
