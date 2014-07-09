@@ -62,7 +62,6 @@ public class BCryptPasswordITCase {
 	@Test
 	public void testHashSuperEasyToCrack() {
 		final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		System.out.println(passwordEncoder.encode("password123!"));
 		final String hashed = "$2a$10$FPXLVweqprpxU9yGoX2RfuF/xtUVamB4XQByESlaqygK8d4cORgtq";
 		assertThat(passwordEncoder.matches("password123!", hashed),
 				equalTo(Boolean.TRUE));
