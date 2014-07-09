@@ -3,11 +3,13 @@ package com.twistlet.qir.common.model.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Document(indexName = "user")
 public class User implements Serializable {
 
+	@Id
 	private String username;
 	private String fullname;
 	private String password;
