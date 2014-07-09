@@ -11,6 +11,7 @@ user management
 
 - edit name/details of current user
 - change password for current user
+
 - create new user 
 - search for other users 
 - change password for other users

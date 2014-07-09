@@ -60,7 +60,7 @@ public class BasicEntityTest {
 				if (declaredParameters.length == 0) {
 					o = c.newInstance();
 				} else {
-					o = c.newInstance(args);
+					o = c.newInstance(args.toArray());
 				}
 			} else {
 				System.err.println("Unable to create an instance of "
