@@ -84,6 +84,7 @@ public class BasicEntityTest {
 			}
 			if (c == List.class) {
 				args.add(new ArrayList());
+				continue;
 			}
 			System.err.println("Unable to handle type [" + c.toString() + "]");
 		}
