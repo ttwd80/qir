@@ -12,6 +12,9 @@
 		<config>src/main/resources/qir-context-service.xml</config>
 		<config>src/test/resources/dummy-to-remove-sts-error.xml</config>
 		<config>src/test/resources/selenium-test-spring-context.xml</config>
+		<config>src/main/resources/qir-context-es-client.xml</config>
+		<config>src/main/resources/qir-context-es-config.xml</config>
+		<config>src/main/resources/qir-context-es-data-init.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
@@ -24,6 +27,9 @@
 				<config>src/main/resources/qir-context-security.xml</config>
 				<config>src/main/resources/qir-context-service.xml</config>
 				<config>src/test/resources/dummy-to-remove-sts-error.xml</config>
+				<config>src/main/resources/qir-context-es-client.xml</config>
+				<config>src/main/resources/qir-context-es-config.xml</config>
+				<config>src/main/resources/qir-context-es-data-init.xml</config>
 			</configs>
 			<profiles>
 			</profiles>
