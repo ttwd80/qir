@@ -16,7 +16,7 @@ import com.twistlet.qir.common.model.service.DataInitService;
 
 @ContextConfiguration({ "classpath:selenium-test-spring-context.xml",
 		"classpath:qir-context-es-config.xml",
-		"classpath:test-qir-context-es-client.xml",
+		"classpath:qir-context-es-client.xml",
 		"classpath:qir-context-es-data-init.xml" })
 public abstract class AbstractWebITCase extends
 		AbstractJUnit4SpringContextTests {

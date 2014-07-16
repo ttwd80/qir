@@ -7,6 +7,4 @@
 
 
 	<elasticsearch:transport-client id="elasticsearch" />
-	<!-- <elasticsearch:node-client id="elasticsearch" -->
-	<!-- http-enabled="true" /> -->
 </beans>
