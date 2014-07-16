@@ -7,4 +7,5 @@
 
 
 	<elasticsearch:transport-client id="elasticsearch" />
+
 </beans>
