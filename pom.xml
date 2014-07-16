@@ -277,7 +277,6 @@
 						<zipUrlInstaller>
 							<url>http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.9/bin/apache-tomcat-8.0.9.zip</url>
 						</zipUrlInstaller>
-						<timeout>180000</timeout>
 					</container>
 					<deployables>
 						<deployable>
@@ -295,9 +294,6 @@
 						<goals>
 							<goal>start</goal>
 						</goals>
-						<configuration>
-							<timeout>60000</timeout>
-						</configuration>
 					</execution>
 					<execution>
 						<id>stop-container</id>
