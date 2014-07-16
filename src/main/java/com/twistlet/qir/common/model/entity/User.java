@@ -1,7 +1,7 @@
 package com.twistlet.qir.common.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -13,7 +13,7 @@ public class User implements Serializable {
 	private String username;
 	private String fullname;
 	private String password;
-	private List<String> roles;
+	private Set<String> roles;
 
 	public User() {
 	}
@@ -47,11 +47,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public List<String> getRoles() {
+	public Set<String> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(final List<String> roles) {
+	public void setRoles(final Set<String> roles) {
 		this.roles = roles;
 	}
 
