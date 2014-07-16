@@ -2,6 +2,7 @@ package com.twistlet.qir.common.model.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 		final User user = new User();
 		user.setFullname("Administrator");
 		user.setPassword("$2a$10$FPXLVweqprpxU9yGoX2RfuF/xtUVamB4XQByESlaqygK8d4cORgtq");
-		user.setRoles(Arrays.asList("ROLE_ADMIN"));
+		user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_ADMIN")));
 		user.setUsername("admin");
 		userRepository.save(user);
 	}
@@ -82,7 +83,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 			user.setFullname("Normal user #" + id);
 			user.setUsername(name[id - 1]);
 			user.setPassword(hashed[id - 1]);
-			user.setRoles(Arrays.asList("ROLE_USER"));
+			user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_USER")));
 			userRepository.save(user);
 		}
 	}

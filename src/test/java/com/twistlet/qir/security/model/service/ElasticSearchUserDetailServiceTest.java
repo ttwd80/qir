@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +45,7 @@ public class ElasticSearchUserDetailServiceTest {
 		final User userFromDb = new User();
 		userFromDb.setPassword("#hashed#");
 		userFromDb.setUsername("user-with-no-roles");
-		userFromDb.setRoles(new ArrayList<String>());
+		userFromDb.setRoles(new LinkedHashSet<String>());
 		when(userRepository.findOne("user-with-no-roles")).thenReturn(
 				userFromDb);
 		final UserDetails userDetails = sut
@@ -64,7 +65,8 @@ public class ElasticSearchUserDetailServiceTest {
 		final User userFromDb = new User();
 		userFromDb.setPassword("#hashed#");
 		userFromDb.setUsername("user-with-roles");
-		userFromDb.setRoles(Arrays.asList("ROLE_USER"));
+		userFromDb.setRoles(new LinkedHashSet<String>(Arrays
+				.asList("ROLE_USER")));
 		when(userRepository.findOne("user-with-roles")).thenReturn(userFromDb);
 		final UserDetails userDetails = sut
 				.loadUserByUsername("user-with-roles");

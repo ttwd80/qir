@@ -1,8 +1,8 @@
 package com.twistlet.qir.security.model.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -45,11 +45,11 @@ public class ElasticSearchUserDetailService implements UserDetailsService {
 	}
 
 	private Collection<? extends GrantedAuthority> toAuthorities(
-			final List<String> roles) {
-		final List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+			final Set<String> roles) {
+		final Set<GrantedAuthority> set = new LinkedHashSet<GrantedAuthority>();
 		for (final String role : roles) {
-			list.add(new SimpleGrantedAuthority(role));
+			set.add(new SimpleGrantedAuthority(role));
 		}
-		return list;
+		return set;
 	}
 }
