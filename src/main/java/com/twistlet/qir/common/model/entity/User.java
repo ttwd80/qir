@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "user")
+@Document(indexName = "qir", type = "user")
 public class User implements Serializable {
 
 	@Id
