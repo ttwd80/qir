@@ -31,11 +31,9 @@ public class ElasticsearchDataInitService implements DataInitService {
 	@Override
 	public void init() {
 		if (roleRepository.count() == 0L) {
-			roleRepository.deleteAll();
 			initRoles();
 		}
 		if (userRepository.count() == 0L) {
-			userRepository.deleteAll();
 			initUsers();
 		}
 	}
