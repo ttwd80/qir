@@ -8,4 +8,6 @@
 	<util:properties id="config"
 		location="classpath:selenium-test.properties" />
 
+	<bean
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 </beans>
