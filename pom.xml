@@ -11,10 +11,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring.version>4.0.5.RELEASE</spring.version>
+		<spring.version>4.0.6.RELEASE</spring.version>
 		<spring.security.version>3.2.4.RELEASE</spring.security.version>
 		<slf4j.version>1.7.7</slf4j.version>
-		<querydsl.version>3.4.1</querydsl.version>
 	</properties>
 
 	<dependencies>
@@ -179,6 +178,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>4.1.0</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.2.0</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>2.1.1</version>
 			<scope>runtime</scope>
@@ -197,7 +208,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>bootswatch-journal</artifactId>
+			<artifactId>bootswatch-flatly</artifactId>
 			<version>3.2.0-1</version>
 			<scope>runtime</scope>
 		</dependency>

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org/layout"
+	layout:decorator="layout/admin">
 <head>
+<title>Admin Index</title>
 </head>
 <body>
-	<div>
-		<h1>Menu</h1>
-		<ul>
-			<li><a th:href="@{/admin/usermanagement/role/list}">Roles</a></li>
-			<li><a th:href="@{/admin/usermanagement/user/new}">New User</a></li>
-		</ul>
-	</div>
+	<div layout:fragment="content">List content</div>
 </body>
 </html>

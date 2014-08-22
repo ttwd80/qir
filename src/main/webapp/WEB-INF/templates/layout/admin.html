@@ -1,18 +1,59 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.thymeleaf.org/layout">
+<!--<![endif]-->
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task
 	List</title>
 <link th:href="@{#{resource.bootstrap.css}}" rel="stylesheet"></link>
-<link th:href="@{/resources/css/login.css}" rel="stylesheet"></link>
+<link th:href="@{#{resource.bootswatch.css}}" rel="stylesheet"></link>
+<link th:href="@{#{resource.fontawesome.css}}" rel="stylesheet"></link>
+<link th:href="@{/resources/css/app.css}" rel="stylesheet"></link>
+<script type="text/javascript" th:src="@{#{resource.modernizr.js}}"></script>
+<script type="text/javascript" th:src="@{#{resource.respond.js}}"></script>
 </head>
 
 <body>
-	<div class="container"></div>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span
+					title="QIR - Quotation -> Invoice -> Recepit"><span
+						class="fa fa-2 fa-fw fa-file-text"></span> QIR</span></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="fa fa-2 fa-fw fa-wrench"></span>
+							Administration <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="@{/admin/role/list}"><span
+									class="fa fa-2 fa-fw fa-gavel"></span> Role management</a></li>
+							<li><a href="@{/admin/user/list}"><span
+									class="fa fa-2 fa-fw fa-users"></span> User management</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div layout:fragment="content">CONTENT</div>
+	</div>
 	<script type="text/javascript" th:src="@{#{resource.jquery.js}}"></script>
 	<script type="text/javascript" th:src="@{#{resource.bootstrap.js}}"></script>
 </body>
