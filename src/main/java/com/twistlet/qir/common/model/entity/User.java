@@ -11,8 +11,11 @@ public class User implements Serializable {
 
 	@Id
 	private String username;
+
 	private String fullname;
+
 	private String password;
+
 	private Set<String> roles;
 
 	public User() {
