@@ -12,10 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task
 	List</title>
-<link th:href="@{#{resource.bootstrap.css}}" rel="stylesheet"></link>
 <link th:href="@{#{resource.bootswatch.css}}" rel="stylesheet"></link>
 <link th:href="@{#{resource.fontawesome.css}}" rel="stylesheet"></link>
-<link th:href="@{/resources/css/app.css}" rel="stylesheet"></link>
 <script type="text/javascript" th:src="@{#{resource.modernizr.js}}"></script>
 <script type="text/javascript" th:src="@{#{resource.respond.js}}"></script>
 </head>
@@ -30,7 +28,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span
+				<a class="navbar-brand" th:href="@{/}"><span
 					title="QIR - Quotation -> Invoice -> Recepit"><span
 						class="fa fa-2 fa-fw fa-file-text"></span> QIR</span></a>
 			</div>
@@ -42,9 +40,9 @@
 						data-toggle="dropdown"><span class="fa fa-2 fa-fw fa-wrench"></span>
 							Administration <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="@{/admin/role/list}"><span
+							<li><a th:href="@{/admin/role/list}"><span
 									class="fa fa-2 fa-fw fa-gavel"></span> Role management</a></li>
-							<li><a href="@{/admin/user/list}"><span
+							<li><a th:href="@{/admin/user/list}"><span
 									class="fa fa-2 fa-fw fa-users"></span> User management</a></li>
 						</ul></li>
 				</ul>

@@ -23,6 +23,7 @@
 			<set>
 				<bean
 					class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+				<bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
 			</set>
 		</property>
 	</bean>
@@ -61,6 +62,7 @@
 	<mvc:view-controller path="/login" view-name="login" />
 	<mvc:view-controller path="/index" view-name="index" />
 	<mvc:view-controller path="/welcome" view-name="redirect:/index" />
+	<mvc:view-controller path="/admin/**" />
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	<mvc:resources location="/webjars/" mapping="/webjars/**" />

@@ -220,6 +220,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>respond</artifactId>
+			<version>1.4.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>datatables</artifactId>
 			<version>1.10.2</version>
 			<scope>runtime</scope>
