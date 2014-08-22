@@ -175,31 +175,37 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>3.2.0</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>2.1.1</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
-			<version>1.10.3</version>
+			<version>1.11.1</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui-themes</artifactId>
-			<version>1.10.3</version>
+			<version>1.11.0</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>html5shiv</artifactId>
-			<version>3.7.2</version>
+			<artifactId>bootswatch-journal</artifactId>
+			<version>3.2.0-1</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>respond</artifactId>
-			<version>1.4.2</version>
+			<artifactId>datatables</artifactId>
+			<version>1.10.2</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- Spring Data Elasticsearch -->
@@ -245,9 +251,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.17</version>
-				<configuration>
-					<argLine>-XX:-UseSplitVerifier</argLine>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -270,7 +273,7 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>1.4.8</version>
+				<version>1.4.9</version>
 				<configuration>
 					<container>
 						<containerId>tomcat8x</containerId>
