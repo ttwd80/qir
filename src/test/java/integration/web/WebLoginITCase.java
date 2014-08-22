@@ -1,7 +1,7 @@
 package integration.web;
 
-import static org.hamcrest.core.IsEqual.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class WebLoginITCase extends AbstractWebITCase {
 
 	@Test
 	public void loginAdminOk() {
-		login("admin", "password123!");
+		login("admin", "cefew86traqe");
 		final String actual = webDriver.getCurrentUrl();
 		assertThat(actual, equalTo(baseUrl + "/admin/index"));
 	}
@@ -30,7 +30,7 @@ public class WebLoginITCase extends AbstractWebITCase {
 
 	@Test
 	public void loginUserOk() {
-		login("user01", "user01");
+		login("user01", "wruy7cran5tr01");
 		final String actual = webDriver.getCurrentUrl();
 		assertThat(actual, equalTo(baseUrl + "/user/index"));
 	}
