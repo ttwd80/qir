@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.twistlet.qir.common.model.entity.Role;
 import com.twistlet.qir.common.model.entity.User;
@@ -16,23 +17,30 @@ public class ElasticsearchDataInitService implements DataInitService {
 
 	private final UserRepository userRepository;
 	private final RoleRepository roleRepository;
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public ElasticsearchDataInitService(final UserRepository userRepository,
+	public ElasticsearchDataInitService(PasswordEncoder passwordEncoder,
+			final UserRepository userRepository,
 			final RoleRepository roleRepository) {
-		super();
+		this.passwordEncoder = passwordEncoder;
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 	}
 
 	@Override
 	public void init() {
-		initUsers();
-		initRoles();
+		if (roleRepository.count() == 0L) {
+			roleRepository.deleteAll();
+			initRoles();
+		}
+		if (userRepository.count() == 0L) {
+			userRepository.deleteAll();
+			initUsers();
+		}
 	}
 
 	private void initRoles() {
-		roleRepository.deleteAll();
 		roleRepository.save(createAllRoles());
 
 	}
@@ -40,6 +48,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 	private List<Role> createAllRoles() {
 		final List<Role> list = new ArrayList<Role>();
 		list.add(createRole("ROLE_ADMIN"));
+		list.add(createRole("ROLE_USER"));
 		return list;
 	}
 
@@ -50,7 +59,6 @@ public class ElasticsearchDataInitService implements DataInitService {
 	}
 
 	private void initUsers() {
-		userRepository.deleteAll();
 		initAdmin();
 		initNormalUsers();
 	}
@@ -58,26 +66,25 @@ public class ElasticsearchDataInitService implements DataInitService {
 	private void initAdmin() {
 		final User user = new User();
 		user.setFullname("Administrator");
-		user.setPassword("$2a$10$FPXLVweqprpxU9yGoX2RfuF/xtUVamB4XQByESlaqygK8d4cORgtq");
 		user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_ADMIN")));
 		user.setUsername("admin");
+		user.setPassword(passwordEncoder.encode("cefew86traqe"));
 		userRepository.save(user);
 	}
 
 	private void initNormalUsers() {
 		final String[] name = { "user01", "user02", "user03", "user04",
 				"user05", "user06", "user07", "user08", "user09", "user10" };
-		final String[] hashed = {
-				"$2a$10$DWBqLX6nv6h2UTzg1FcX4uC21PN.MdMKWegsj/tLJvR/iDjzK/jpS",
-				"$2a$10$xI8tXn1xzqe.YyeysYL5kuD3WEZLCom7vZ5TJOEQggoFBG.Z4jXhu",
-				"$2a$10$CINTGP9y3EH.DdsgHb4BsuiX/cekGwK0A6If5xcZgtamzGt3ZQ06W",
-				"$2a$10$bfUBwRcPUJJaibXJUekOWubfdUzAQyv91m/JcJ9ftu2Ryp/7kTVtW",
-				"$2a$10$tc2P1gncfAJsKcA.hMRszuN3N1vljXaHaV4nhuHGekcnagEcLxDfu",
-				"$2a$10$EQPjEsFVBAIPQCemXtWSwe2OVQt28mUp1jQahuQHep2CUOej0VxjC",
-				"$2a$10$88Nu.zsouhH9YZG5kX7td.bm3j6fySQUSeJ7pAo5.ZifT88kTzUvO",
-				"$2a$10$pIcoFjNK7iAgpogzOMQteO1wwTTYaXu5iajgFIS7c2JkaxJ4ugp0a",
-				"$2a$10$vO4e/TobzfF0tabk2dZ.TewfShZHgIIAhekiHdbLmbnQ5g4MVTFiO",
-				"$2a$10$kDuuZOFYrKNpKOcu/MOT8eOGecp..dlRo8m.LrJF4hga.6KKp1ula" };
+		final String[] hashed = { passwordEncoder.encode("wruy7cran5tr01"),
+				passwordEncoder.encode("wruy7cran5tr02"),
+				passwordEncoder.encode("wruy7cran5tr03"),
+				passwordEncoder.encode("wruy7cran5tr04"),
+				passwordEncoder.encode("wruy7cran5tr05"),
+				passwordEncoder.encode("wruy7cran5tr06"),
+				passwordEncoder.encode("wruy7cran5tr07"),
+				passwordEncoder.encode("wruy7cran5tr08"),
+				passwordEncoder.encode("wruy7cran5tr09"),
+				passwordEncoder.encode("wruy7cran5tr10") };
 		for (int id = 1; id <= 10; id++) {
 			final User user = new User();
 			user.setFullname("Normal user #" + id);
