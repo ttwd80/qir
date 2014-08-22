@@ -1,0 +1,20 @@
+curl -XPUT 'http://localhost:9200/qir' -d '
+    {
+        "settings" : {
+            "analysis" : {
+                "analyzer" : {
+                    "ngram_1_10_analyzer" : {
+                        "tokenizer" : "ngram_1_10_tokenizer",
+                        "filter"    :  ["lowercase"]
+                    }
+                },
+                "tokenizer" : {
+                    "ngram_1_10_tokenizer" : {
+                        "type" : "nGram",
+                        "min_gram" : "1",
+                        "max_gram" : "10"
+                    }
+                }
+            }
+        }
+    }'
