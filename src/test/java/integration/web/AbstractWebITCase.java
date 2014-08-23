@@ -3,7 +3,10 @@ package integration.web;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,6 +38,10 @@ public abstract class AbstractWebITCase extends
 	@Before
 	public void initData() {
 		dataInitService.init();
+		webDriver = new PhantomJSDriver();
+		Options options = webDriver.manage();
+		Window window = options.window();
+		window.setSize(new Dimension(1280, 800));
 	}
 
 	@After
@@ -43,7 +50,6 @@ public abstract class AbstractWebITCase extends
 	}
 
 	private void loadLoginPage() {
-		webDriver = new PhantomJSDriver();
 		webDriver.get(baseUrl);
 	}
 
