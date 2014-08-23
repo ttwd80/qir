@@ -1,5 +1,7 @@
 package integration.web;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -8,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,6 +38,7 @@ public abstract class AbstractWebITCase extends
 
 	@Before
 	public void initData() {
+		dataInitService.clear();
 		dataInitService.init();
 		webDriver = new PhantomJSDriver();
 		Options options = webDriver.manage();
@@ -57,8 +59,7 @@ public abstract class AbstractWebITCase extends
 		loadLoginPage();
 		final WebDriverWait wait = new WebDriverWait(webDriver,
 				secondsToWaitForElement);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By
-				.id("j_username")));
+		wait.until(presenceOfElementLocated(By.id("j_username")));
 		webDriver.findElement(By.id("j_username")).sendKeys(username);
 		webDriver.findElement(By.id("j_password")).sendKeys(password);
 		webDriver.findElement(By.id("submit")).click();
