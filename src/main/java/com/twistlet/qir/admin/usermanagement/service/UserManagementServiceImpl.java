@@ -1,5 +1,6 @@
 package com.twistlet.qir.admin.usermanagement.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.twistlet.qir.common.model.entity.User;
@@ -10,6 +11,7 @@ public class UserManagementServiceImpl implements UserManagementService {
 
 	private UserRepository userRepository;
 
+	@Autowired
 	public UserManagementServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}

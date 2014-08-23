@@ -54,7 +54,6 @@
 		<property name="cacheable" value="false" />
 	</bean>
 
-	<context:component-scan base-package="com.twistlet.qir.common.controller" />
 
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
@@ -71,5 +70,11 @@
 		<entry key="ROLE_ADMIN" value="redirect:/admin/index" />
 		<entry key="ROLE_USER" value="redirect:/user/index" />
 	</util:map>
+
+	<context:component-scan base-package="com.twistlet.qir.common.controller" />
+	
+	<context:component-scan
+		base-package="com.twistlet.qir.admin.usermanagement.controller" />
+
 
 </beans>
