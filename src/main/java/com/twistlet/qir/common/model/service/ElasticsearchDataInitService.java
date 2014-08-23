@@ -93,4 +93,10 @@ public class ElasticsearchDataInitService implements DataInitService {
 		}
 	}
 
+	@Override
+	public void clear() {
+		userRepository.deleteAll();
+		roleRepository.deleteAll();
+	}
+
 }
