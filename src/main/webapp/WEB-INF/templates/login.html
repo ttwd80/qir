@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org/layout">
+<!--<![endif]-->
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<title>Signin Template for Bootstrap</title>
+<title th:text="#{'app.name'} + ' :: ' + #{title.login}">Login</title>
 
 <!-- Bootstrap core CSS -->
-<link th:href="@{#{resource.bootstrap.css}}" rel="stylesheet"></link>
+<link rel="stylesheet" th:href="@{#{resource.bootswatch.css}}"></link>
 
 <!-- Custom styles for this template -->
 <link th:href="@{/resources/css/login.css}" rel="stylesheet"></link>
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script th:src="@{#{resource.html5shiv.js}}"></script>
-      <script th:src="@{#{resource.respond.js}}"></script>
-    <![endif]-->
+<script type="text/javascript" th:src="@{#{resource.modernizr.js}}"></script>
+<script type="text/javascript" th:src="@{#{resource.respond.js}}"></script>
 </head>
 
 <body>
