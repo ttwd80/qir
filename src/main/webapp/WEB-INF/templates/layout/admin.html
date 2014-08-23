@@ -12,14 +12,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task
 	List</title>
-<link th:href="@{#{resource.bootswatch.css}}" rel="stylesheet"></link>
-<link th:href="@{#{resource.fontawesome.css}}" rel="stylesheet"></link>
+<link rel="stylesheet" th:href="@{#{resource.bootswatch.css}}"></link>
+<link rel="stylesheet" th:href="@{#{resource.fontawesome.css}}"></link>
 <script type="text/javascript" th:src="@{#{resource.modernizr.js}}"></script>
 <script type="text/javascript" th:src="@{#{resource.respond.js}}"></script>
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse" role="navigation">
+	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -40,11 +40,13 @@
 						data-toggle="dropdown"><span class="fa fa-2 fa-fw fa-wrench"></span>
 							Administration <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a th:href="@{/admin/role/list}"><span
-									class="fa fa-2 fa-fw fa-gavel"></span> Role management</a></li>
-							<li><a th:href="@{/admin/user/list}"><span
+							<li><a id="link-manage-user" th:href="@{/admin/user/list}"><span
 									class="fa fa-2 fa-fw fa-users"></span> User management</a></li>
 						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a id="link-logout" th:href="@{/logout}"><span
+							class="fa fa-2 fa-fw fa-sign-out"></span> Logout</a></li>
 				</ul>
 			</div>
 		</div>
