@@ -58,4 +58,9 @@ public abstract class AbstractWebITCase extends
 		webDriver.findElement(By.id("submit")).click();
 		return webDriver;
 	}
+
+	protected WebDriver loginAdmin() {
+		return login("admin", "cefew86traqe");
+	}
+
 }
