@@ -1,1 +1,21 @@
-user listing
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org/layout"
+	layout:decorator="layout/admin">
+<head>
+<title>User List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div>
+			<ol class="breadcrumb">
+				<li><a th:href="@{/admin/index}">Admin</a></li>
+				<li class="active"><a th:href="@{/admin/user/list}"
+					th:text="List of users">Nothing</a></li>
+			</ol>
+		</div>
+	
+	</div>
+
+</body>
+</html>
