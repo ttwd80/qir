@@ -333,6 +333,9 @@
 						<goals>
 							<goal>start</goal>
 						</goals>
+						<configuration>
+							<timeout>300000</timeout>
+						</configuration>
 					</execution>
 					<execution>
 						<id>stop-container</id>
