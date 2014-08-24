@@ -39,7 +39,7 @@ public class ElasticSearchUserDetailService implements UserDetailsService {
 			userDetails.setAccountNonExpired(true);
 			userDetails.setAccountNonLocked(true);
 			userDetails.setCredentialsNonExpired(true);
-			userDetails.setEnabled(true);
+			userDetails.setEnabled(Boolean.TRUE.equals(user.getEnabled()));
 			return userDetails;
 		}
 	}
