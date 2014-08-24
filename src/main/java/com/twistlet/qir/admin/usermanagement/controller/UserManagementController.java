@@ -18,7 +18,7 @@ public class UserManagementController {
 		this.userManagementService = userManagementService;
 	}
 
-	@RequestMapping("/admin/usermanagement/list")
+	@RequestMapping("/admin/user/list")
 	public ModelAndView list() {
 		Iterable<User> list = userManagementService.listUser();
 		ModelAndView mav = new ModelAndView();

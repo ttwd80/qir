@@ -10,14 +10,13 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task
-	List</title>
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"
+	th:text="#{app.name}">Task List</title>
 <link rel="stylesheet" th:href="@{#{resource.bootswatch.css}}"></link>
 <link rel="stylesheet" th:href="@{#{resource.fontawesome.css}}"></link>
 <script type="text/javascript" th:src="@{#{resource.modernizr.js}}"></script>
 <script type="text/javascript" th:src="@{#{resource.respond.js}}"></script>
 </head>
-
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -56,6 +55,7 @@
 	</div>
 	<script type="text/javascript" th:src="@{#{resource.jquery.js}}"></script>
 	<script type="text/javascript" th:src="@{#{resource.bootstrap.js}}"></script>
+	<div class="hidden" layout:fragment="javascript"></div>
 </body>
 </html>
 
