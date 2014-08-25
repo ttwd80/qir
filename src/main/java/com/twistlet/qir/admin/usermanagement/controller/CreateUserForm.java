@@ -5,4 +5,5 @@ public class CreateUserForm extends BaseUserForm {
 	private String password;
 
 	private String passwordConfirm;
+
 }

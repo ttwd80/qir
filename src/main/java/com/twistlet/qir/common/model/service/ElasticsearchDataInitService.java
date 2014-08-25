@@ -67,6 +67,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 		user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_ADMIN")));
 		user.setUsername("admin");
 		user.setPassword(passwordEncoder.encode("cefew86traqe"));
+		user.setEnabled(Boolean.TRUE);
 		userRepository.save(user);
 	}
 
@@ -89,6 +90,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 			user.setUsername(name[id - 1]);
 			user.setPassword(hashed[id - 1]);
 			user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_USER")));
+			user.setEnabled(Boolean.TRUE);
 			userRepository.save(user);
 		}
 	}

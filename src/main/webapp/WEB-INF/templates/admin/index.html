@@ -3,13 +3,14 @@
 	xmlns:layout="http://www.thymeleaf.org/layout"
 	layout:decorator="layout/admin">
 <head>
-<title>Admin Index</title>
+<title th:text="#{breadcrumb.admin}">title</title>
 </head>
 <body>
 	<div layout:fragment="content">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li class="active"><a th:href="@{/admin/index}">Admin</a></li>
+				<li class="active"><a th:href="@{/admin/index}"
+					th:text="#{breadcrumb.admin}">admin</a></li>
 			</ol>
 		</div>
 		<div class="container">

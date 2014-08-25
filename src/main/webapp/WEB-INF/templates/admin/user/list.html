@@ -3,14 +3,15 @@
 	xmlns:layout="http://www.thymeleaf.org/layout"
 	layout:decorator="layout/admin">
 <head>
-<title>User List</title>
+<title th:text="#{breadcrumb.admin} + '::' + #{breadcrumb.admin.users}">?users?</title>
 </head>
 <body>
 	<div layout:fragment="content">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li><a th:href="@{/admin/index}">Admin</a></li>
-				<li class="active"><a th:href="@{/admin/user/list}">Users</a></li>
+				<li><a th:href="@{/admin/index}" th:text="#{breadcrumb.admin}">?admin?</a></li>
+				<li class="active"><a th:href="@{/admin/user/list}"
+					th:text="#{breadcrumb.admin.users}">?Users?</a></li>
 			</ol>
 		</div>
 		<div class="container">
@@ -18,7 +19,8 @@
 				<div class="col-lg-2">
 					<p>
 						<a th:href="@{/admin/user/add}" class="btn btn-block btn-primary"><span
-							class="fa fa-fw fa-2 fa-plus"></span> Add</a>
+							class="fa fa-fw fa-2 fa-plus"></span> <span
+							th:text="#{label.add}">?add?</span></a>
 					</p>
 				</div>
 			</div>
@@ -30,20 +32,21 @@
 						class="table table-striped table-hover table-condensed">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Password</th>
-								<th>Remove</th>
+								<th th:text="#{label.user.username}">?username?</th>
+								<th th:text="#{label.user.fullname}">?name?</th>
+								<th th:text="#{label.user.password}">?password?</th>
+								<th th:text="#{label.remove}">?remove?</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="item: ${list}">
-								<td><span class="item-label item-id"
-									th:text="${item.username}">ID</span></td>
 								<td><a th:href="@{/admin/user/edit(id=${item.username})}"
-									href="#"><span th:text="${item.fullname}">Name</span></a></td>
-								<td><a href="#" class="link-change-password">Change</a></td>
-								<td><a href="#" class="link-remove">Remove</a></td>
+									href="#"><span class="item-label item-id"
+										th:text="${item.username}">?id?</span></a></td>
+								<td><span th:text="${item.fullname}">?name?</span></td>
+								<td><a href="#" class="link-change-password">?change?</a></td>
+								<td><a href="#" class="link-remove btn-danger"><span
+										th:title="#{label.remove}" class="fa fa-fw fa-2 fa-times"></span></a></td>
 							</tr>
 						</tbody>
 					</table>

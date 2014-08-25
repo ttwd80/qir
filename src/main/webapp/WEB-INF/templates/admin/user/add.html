@@ -3,15 +3,19 @@
 	xmlns:layout="http://www.thymeleaf.org/layout"
 	layout:decorator="layout/admin">
 <head>
-<title>User Add</title>
+<title
+	th:text="${#{breadcrumb.admin} + '::' + #{breadcrumb.admin.users} + '::' + #{breadcrumb.admin.users.add}}">add</title>
 </head>
 <body>
 	<div layout:fragment="content">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li><a th:href="@{/admin/index}">Admin</a></li>
-				<li><a th:href="@{/admin/user/list}">Users</a></li>
-				<li><a class="active" th:href="@{/admin/user/add}">Add</a></li>
+				<li><a th:href="@{/admin/index}"
+					th:text="${#{breadcrumb.admin}">admin</a></li>
+				<li><a th:href="@{/admin/user/list}"
+					th:text="${#{breadcrumb.admin.users}">users</a></li>
+				<li><a class="active" th:href="@{/admin/user/add}"
+					th:text="${#{breadcrumb.admin.users.add}">add</a></li>
 			</ol>
 		</div>
 		<div class="container">
