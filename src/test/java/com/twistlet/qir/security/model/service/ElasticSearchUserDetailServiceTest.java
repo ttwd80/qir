@@ -46,6 +46,7 @@ public class ElasticSearchUserDetailServiceTest {
 		userFromDb.setPassword("#hashed#");
 		userFromDb.setUsername("user-with-no-roles");
 		userFromDb.setRoles(new LinkedHashSet<String>());
+		userFromDb.setEnabled(Boolean.TRUE);
 		when(userRepository.findOne("user-with-no-roles")).thenReturn(
 				userFromDb);
 		final UserDetails userDetails = sut
@@ -67,6 +68,7 @@ public class ElasticSearchUserDetailServiceTest {
 		userFromDb.setUsername("user-with-roles");
 		userFromDb.setRoles(new LinkedHashSet<String>(Arrays
 				.asList("ROLE_USER")));
+		userFromDb.setEnabled(Boolean.TRUE);
 		when(userRepository.findOne("user-with-roles")).thenReturn(userFromDb);
 		final UserDetails userDetails = sut
 				.loadUserByUsername("user-with-roles");
