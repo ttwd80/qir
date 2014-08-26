@@ -30,7 +30,11 @@
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="messages" />
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
 		<property name="commonMessages">
 			<ref bean="commonMessages" />
 		</property>
@@ -72,7 +76,7 @@
 	</util:map>
 
 	<context:component-scan base-package="com.twistlet.qir.common.controller" />
-	
+
 	<context:component-scan
 		base-package="com.twistlet.qir.admin.usermanagement.controller" />
 
