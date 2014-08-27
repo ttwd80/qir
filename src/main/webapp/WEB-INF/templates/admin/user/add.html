@@ -40,7 +40,7 @@
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
-							<label for="name" class="col-sm-4 control-label"
+							<label for="fullname" class="col-sm-4 control-label"
 								th:text="#{label.user.fullname}">?name?</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control bv-input" name="fullname"
@@ -95,6 +95,17 @@
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label class="col-sm-4 control-label"
+								th:text="#{label.user.enabled}">?enabled?</label>
+							<div class="col-sm-8">
+								<input id="enabled-y" type="radio" value="true"
+									checked="checked" name="enabled" /> <label for="enabled-y"
+									th:text="#{label.yes}">?yes?</label> <br /> <input
+									id="enabled-n" type="radio" value="false" name="enabled" /> <label
+									for="enabled-n" th:text="#{label.no}">?no?</label>
 							</div>
 						</div>
 						<div class="row">
