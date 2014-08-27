@@ -1,0 +1,18 @@
+QUnit.test("table is a datatable", function(assert) {
+	assert.ok($("#table").hasClass("dataTable"), "Passed!");
+});
+QUnit.test("delete message is initially empty", function(assert) {
+	var message = $(".dialog-message", $("#dialog-confirm-delete")).text();
+	assert.ok(message === "", "Passed!");
+});
+QUnit.test("delete message element initially invisible", function(assert) {
+	var dialog_section = $("#dialog-confirm-delete");
+	var message_element = $(".dialog-message", dialog_section);
+	assert.ok(message_element.is(":hidden"), "Passed!");
+});
+QUnit.test("delete message element becomes visible", function(assert) {
+	// $("#delete-link-1").click();
+	var dialog_section = $("#dialog-confirm-delete");
+	var message_element = $(".dialog-message", dialog_section);
+	assert.ok(message_element.is(":visible"), "Passed!");
+});
