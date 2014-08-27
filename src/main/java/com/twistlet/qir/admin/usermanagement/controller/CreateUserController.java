@@ -45,7 +45,7 @@ public class CreateUserController {
 			user.setEnabled(form.getEnabled());
 			user.setRoles(Collections.emptySet());
 			userManagementService.create(user, form.getPassword());
-			return "/admin/user/list";
+			return "redirect:/admin/user/list";
 		} catch (RuntimeException e) {
 			logger.error(e.toString());
 			throw new DatabaseException();
