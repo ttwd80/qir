@@ -429,7 +429,7 @@
 				</executions>
 				<configuration>
 					<baseDir>src</baseDir>
-					<includes>**/*-test.html</includes>
+					<includes>**/*-test.html,**/*-test.html</includes>
 					<outputDir>${project.build.directory}/coverage</outputDir>
 					<noInstrumentPatterns>
 						<pattern>http.+</pattern>
