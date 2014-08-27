@@ -2,6 +2,7 @@ package com.twistlet.qir.admin.usermanagement.service;
 
 import static org.hamcrest.core.IsSame.*;
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -37,5 +38,25 @@ public class UserManagementServiceImplTest {
 	public void testListUser() {
 		Iterable<User> listFromSutCall = sut.listUser();
 		assertThat(listFromSutCall, sameInstance(items));
+		verifyZeroInteractions(passwordEncoder);
+	}
+
+	@Test
+	public void testCreate() {
+		when(passwordEncoder.encode("abc")).thenReturn("***");
+		User user = new User();
+		sut.create(user, "abc");
+		verify(passwordEncoder).encode("abc");
+		verify(userRepository).save(any(User.class));
+		verifyNoMoreInteractions(passwordEncoder);
+		verifyNoMoreInteractions(userRepository);
+	}
+
+	@Test
+	public void testRemove() {
+		sut.remove("100");
+		verify(userRepository).delete("100");
+		verifyNoMoreInteractions(passwordEncoder);
+		verifyNoMoreInteractions(userRepository);
 	}
 }
