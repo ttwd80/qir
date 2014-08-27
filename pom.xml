@@ -74,7 +74,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -266,6 +265,12 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap-tokenfield</artifactId>
 			<version>0.12.0</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrapvalidator</artifactId>
+			<version>0.5.0</version>
 			<scope>runtime</scope>
 		</dependency>
 

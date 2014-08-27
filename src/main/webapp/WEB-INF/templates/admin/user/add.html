@@ -5,6 +5,7 @@
 <head>
 <title
 	th:text="#{breadcrumb.admin} + '::' + #{breadcrumb.admin.users} + '::' + #{breadcrumb.admin.users.add}">add</title>
+<link rel="stylesheet" th:href="@{#{resource.bootstrap.validator.css}}"></link>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -21,37 +22,79 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<form id="form" method="post" th:action="@{/admin/user/insert}"
-						action="#" class="form-horizontal" role="form">
+						action="#" class="form-horizontal bv-form" role="form">
 						<div class="form-group form-group-sm">
 							<label for="username" class="col-sm-4 control-label"
 								th:text="#{label.user.username}">?username?</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="username"
+								<input type="text" class="form-control bv-input" name="username"
 									id="username" />
+								<div class="hidden">
+									<div class="validators">
+										<div class="notEmpty">
+											<div class="message"
+												th:text="#{validator.required(#{label.user.username})}"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="name" class="col-sm-4 control-label"
 								th:text="#{label.user.fullname}">?name?</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="fullname"
+								<input type="text" class="form-control bv-input" name="fullname"
 									id="fullname" />
+								<div class="hidden">
+									<div class="validators">
+										<div class="notEmpty">
+											<div class="message"
+												th:text="#{validator.required(#{label.user.fullname})}"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="password" class="col-sm-4 control-label"
 								th:text="#{label.user.password}">?password?</label>
 							<div class="col-sm-8">
-								<input type="password" class="form-control" name="password"
-									id="password" />
+								<input type="password" class="form-control bv-input"
+									name="password" id="password" />
+								<div class="hidden">
+									<div class="validators">
+										<div class="notEmpty">
+											<div class="message"
+												th:text="#{validator.required(#{label.user.password})}"></div>
+										</div>
+										<div class="identical">
+											<div class="field">confirmPassword</div>
+											<div class="message"
+												th:text="#{validator.not.same(#{label.user.password}, #{label.user.password.confirm})}"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="confirmPassword" class="col-sm-4 control-label"
 								th:text="#{label.user.password.confirm}">?confirm?</label>
 							<div class="col-sm-8">
-								<input type="password" class="form-control"
+								<input type="password" class="form-control bv-input"
 									name="confirmPassword" id="confirmPassword" />
+								<div class="hidden">
+									<div class="validators">
+										<div class="notEmpty">
+											<div class="message"
+												th:text="#{validator.required(#{label.user.password.confirm})}"></div>
+										</div>
+										<div class="identical">
+											<div class="field">password</div>
+											<div class="message"
+												th:text="#{validator.not.same(#{label.user.password}, #{label.user.password.confirm})}"></div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -67,8 +110,11 @@
 	</div>
 	<div layout:fragment="javascript">
 		<script type="text/javascript"
+			th:src="@{#{resource.bootstrap.validator.js}}"></script>
+		<script type="text/javascript"
 			th:src="@{/resources/js/common/list.js}"></script>
-		<script type="text/javascript" th:src="@{/resources/js/user/list.js}"></script>
+		<script type="text/javascript"
+			th:src="@{/resources/js/common/validator.js}"></script>
 	</div>
 </body>
 </html>
