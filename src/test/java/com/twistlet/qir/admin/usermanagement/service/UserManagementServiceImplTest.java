@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.twistlet.qir.common.model.entity.User;
 import com.twistlet.qir.common.model.repository.UserRepository;
@@ -21,10 +22,13 @@ public class UserManagementServiceImplTest {
 	@Mock
 	private UserRepository userRepository;
 
+	@Mock
+	private PasswordEncoder passwordEncoder;
+
 	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
-		sut = new UserManagementServiceImpl(userRepository);
+		sut = new UserManagementServiceImpl(passwordEncoder, userRepository);
 		items = new ArrayList<User>();
 		when(userRepository.findAll()).thenReturn(items);
 	}

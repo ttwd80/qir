@@ -4,4 +4,6 @@ import com.twistlet.qir.common.model.entity.User;
 
 public interface UserManagementService {
 	Iterable<User> listUser();
+
+	void create(User user, String rawPassword);
 }
