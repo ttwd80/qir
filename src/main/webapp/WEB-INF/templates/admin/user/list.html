@@ -43,7 +43,7 @@
 						<tbody>
 							<tr th:each="item: ${list}">
 								<td><a th:href="@{/admin/user/edit(id=${item.username})}"
-									href="#"><span class="item-label item-id"
+									href="#"><span class="list-item-label list-item-id"
 										th:text="${item.username}">?id?</span></a></td>
 								<td><span th:text="${item.fullname}">?name?</span></td>
 								<td><span th:text="#{label.edit}">?roles?</span></td>

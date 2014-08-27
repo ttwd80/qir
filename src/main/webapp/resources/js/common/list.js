@@ -17,13 +17,12 @@ $(function() {
 		var template = Hogan.compile(text);
 		var rendered = template.render(data);
 		$(".dialog-message", dialog).text(rendered);
-
 	}
 
 	var table_delete_row = function() {
 		var tr = $(this).parents("tr");
-		var label = $(".item-label", tr).text();
-		var id = $(".item-id", tr).text();
+		var label = $(".list-item-label", tr).text();
+		var id = $(".list-item-id", tr).text();
 		create_delete_message(label);
 		$("#form-delete-id").val(id);
 		delete_row(tr, label);
