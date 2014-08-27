@@ -32,4 +32,9 @@ public class UserManagementServiceImpl implements UserManagementService {
 		userRepository.save(user);
 	}
 
+	@Override
+	public void remove(String id) {
+		userRepository.delete(id);
+	}
+
 }

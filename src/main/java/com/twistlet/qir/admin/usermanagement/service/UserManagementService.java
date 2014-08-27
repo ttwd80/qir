@@ -6,4 +6,6 @@ public interface UserManagementService {
 	Iterable<User> listUser();
 
 	void create(User user, String rawPassword);
+
+	void remove(String id);
 }

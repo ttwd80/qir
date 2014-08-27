@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<div th:fragment="dialog-delete" class="hidden">
+		<div id="dialog-confirm-delete" title="Delete confirmation">
+			<p>
+				<span class="dialog-message"></span>
+			</p>
+			<div class="hidden dialog-message-template"
+				th:text="#{dialog.confirm.delete}"></div>
+		</div>
+		<form id="form-delete" action="#" method="post">
+			<input type="hidden" name="id" class="value" value=""
+				id="form-delete-id" />
+		</form>
+	</div>
+</body>
+</html>

@@ -4,6 +4,7 @@
 	layout:decorator="layout/admin">
 <head>
 <title th:text="#{breadcrumb.admin} + '::' + #{breadcrumb.admin.users}">?users?</title>
+<link rel="stylesheet" th:href="@{#{resource.jquery.ui.css}}"></link>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -54,11 +55,17 @@
 				</div>
 			</div>
 		</div>
+		<div class="hidden">
+			<div th:replace="layout/dialog :: dialog-delete"></div>
+			<a id="link-action-delete" th:href="@{/admin/user/remove}"></a>
+		</div>
 	</div>
 	<div layout:fragment="javascript">
+		<script type="text/javascript" th:src="@{#{resource.jquery.ui.js}}"></script>
+		<script type="text/javascript" th:src="@{#{resource.mustachejs.js}}"></script>
+		<script type="text/javascript" th:src="@{#{resource.jquery.form.js}}"></script>
 		<script type="text/javascript"
 			th:src="@{/resources/js/common/list.js}"></script>
-		<script type="text/javascript" th:src="@{/resources/js/user/list.js}"></script>
 	</div>
 </body>
 </html>
