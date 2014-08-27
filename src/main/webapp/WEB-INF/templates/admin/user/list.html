@@ -35,6 +35,7 @@
 							<tr>
 								<th th:text="#{label.user.username}">?username?</th>
 								<th th:text="#{label.user.fullname}">?name?</th>
+								<th th:text="#{label.user.roles}">?roles?</th>
 								<th th:text="#{label.user.password}">?password?</th>
 								<th th:text="#{label.remove}">?remove?</th>
 							</tr>
@@ -45,6 +46,7 @@
 									href="#"><span class="item-label item-id"
 										th:text="${item.username}">?id?</span></a></td>
 								<td><span th:text="${item.fullname}">?name?</span></td>
+								<td><span th:text="#{label.edit}">?roles?</span></td>
 								<td><a href="#" class="link-change-password"
 									th:text="#{label.change}">?change?</a></td>
 								<td><a href="#" class="link-remove btn-danger"><span
