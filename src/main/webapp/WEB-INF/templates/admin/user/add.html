@@ -68,7 +68,7 @@
 												th:text="#{validator.required(#{label.user.password})}"></div>
 										</div>
 										<div class="identical">
-											<div class="field">confirmPassword</div>
+											<div class="field" th:text="${'confirmPassword'}"></div>
 											<div class="message"
 												th:text="#{validator.not.same(#{label.user.password}, #{label.user.password.confirm})}"></div>
 										</div>
@@ -89,7 +89,7 @@
 												th:text="#{validator.required(#{label.user.password.confirm})}"></div>
 										</div>
 										<div class="identical">
-											<div class="field">password</div>
+											<div class="field" th:text="${'password'}"></div>
 											<div class="message"
 												th:text="#{validator.not.same(#{label.user.password}, #{label.user.password.confirm})}"></div>
 										</div>
@@ -122,8 +122,6 @@
 	<div layout:fragment="javascript">
 		<script type="text/javascript"
 			th:src="@{#{resource.bootstrap.validator.js}}"></script>
-		<script type="text/javascript"
-			th:src="@{/resources/js/common/list.js}"></script>
 		<script type="text/javascript"
 			th:src="@{/resources/js/common/validator.js}"></script>
 	</div>
