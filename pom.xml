@@ -222,7 +222,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
-			<version>1.11.1</version>
+			<version>1.11.0</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -271,6 +271,18 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrapvalidator</artifactId>
 			<version>0.5.0</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>mustachejs</artifactId>
+			<version>0.8.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery-form</artifactId>
+			<version>3.28.0-2013.02.06-3</version>
 			<scope>runtime</scope>
 		</dependency>
 
