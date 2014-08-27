@@ -73,18 +73,13 @@ public class ElasticsearchDataInitService implements DataInitService {
 
 	private void initNormalUsers() {
 		final String[] name = { "user01", "user02", "user03", "user04",
-				"user05", "user06", "user07", "user08", "user09", "user10" };
+				"user05" };
 		final String[] hashed = { passwordEncoder.encode("wruy7cran5tr01"),
 				passwordEncoder.encode("wruy7cran5tr02"),
 				passwordEncoder.encode("wruy7cran5tr03"),
 				passwordEncoder.encode("wruy7cran5tr04"),
-				passwordEncoder.encode("wruy7cran5tr05"),
-				passwordEncoder.encode("wruy7cran5tr06"),
-				passwordEncoder.encode("wruy7cran5tr07"),
-				passwordEncoder.encode("wruy7cran5tr08"),
-				passwordEncoder.encode("wruy7cran5tr09"),
-				passwordEncoder.encode("wruy7cran5tr10") };
-		for (int id = 1; id <= 10; id++) {
+				passwordEncoder.encode("wruy7cran5tr05") };
+		for (int id = 1; id <= name.length; id++) {
 			final User user = new User();
 			user.setFullname("Normal user #" + id);
 			user.setUsername(name[id - 1]);
