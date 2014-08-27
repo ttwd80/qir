@@ -10,11 +10,12 @@ $(function() {
 
 	function create_delete_message(label) {
 		var dialog = $("#dialog-confirm-delete");
-		var template = $(".dialog-message-template", dialog).text();
-		Mustache.parse(template);
-		var rendered = Mustache.render(template, {
-			id : label
-		});
+		var text = $(".dialog-message-template", dialog).text();
+		var data = {
+			"id" : label
+		};
+		var template = Hogan.compile(text);
+		var rendered = template.render(data);
 		$(".dialog-message", dialog).text(rendered);
 
 	}
