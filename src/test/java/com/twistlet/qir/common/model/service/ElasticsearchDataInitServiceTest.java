@@ -53,5 +53,16 @@ public class ElasticsearchDataInitServiceTest {
 		verify(userRepository, atLeastOnce()).save(isA(User.class));
 		verify(roleRepository, atLeastOnce()).save(
 				(Iterable<Role>) isA(Iterable.class));
+		verifyNoMoreInteractions(userRepository);
+		verifyNoMoreInteractions(roleRepository);
+	}
+
+	@Test
+	public void testClear() {
+		sut.clear();
+		verify(userRepository).deleteAll();
+		verify(roleRepository).deleteAll();
+		verifyNoMoreInteractions(userRepository);
+		verifyNoMoreInteractions(roleRepository);
 	}
 }
