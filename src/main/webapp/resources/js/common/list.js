@@ -6,6 +6,7 @@ $(function() {
 		"autoOpen" : false,
 		"modal" : true
 	});
+
 	$("#form-delete").attr("action", $("#link-action-delete").attr("href"));
 
 	function create_delete_message(label) {
@@ -66,8 +67,11 @@ $(function() {
 		}
 
 	}
-	$("#table").on("click", "a.link-remove", function() {
+
+	$("#table").on("click", "a.link-remove", function(e) {
+		e.preventDefault();
 		table_delete_row($(this));
+		return false;
 	});
 
 })

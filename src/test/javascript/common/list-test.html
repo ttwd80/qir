@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <title>QUnit Example</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/datatables/1.10.2/css/jquery.dataTables.min.css"></link>
+	href="https://cdn.jsdelivr.net/webjars/datatables/1.10.2/css/jquery.dataTables.min.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/bootswatch-cerulean/3.2.0/css/bootstrap.min.css"></link>
+	href="https://cdn.jsdelivr.net/webjars/bootswatch-cerulean/3.2.0/css/bootstrap.min.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/font-awesome/4.1.0/css/font-awesome.min.css"></link>
+	href="https://cdn.jsdelivr.net/webjars/font-awesome/4.1.0/css/font-awesome.min.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/jquery-ui-themes/1.11.0/cupertino/jquery-ui.min.css"></link>
+	href="https://cdn.jsdelivr.net/webjars/jquery-ui-themes/1.11.0/cupertino/jquery-ui.min.css" />
 <link rel="stylesheet"
-	href="https://code.jquery.com/qunit/qunit-1.15.0.css">
+	href="https://code.jquery.com/qunit/qunit-1.15.0.css" />
 </head>
 <body>
 	<div id="qunit"></div>
@@ -28,11 +28,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>1</td>
+					<td><span class="list-item-id list-item-label">1</span></td>
 					<td><a id="delete-link-1" class="link-remove" href="#">Delete</a></td>
 				</tr>
 				<tr>
-					<td>2</td>
+					<td><span class="list-item-id list-item-label">2</span></td>
 					<td><a id="delete-link-2" class="link-remove" href="#">Delete</a></td>
 				</tr>
 			</tbody>
@@ -46,7 +46,8 @@
 			<div class="hidden">
 				<div id="dialog-confirm-delete-label-yes">Yes</div>
 				<div id="dialog-confirm-delete-label-no">No</div>
-				<div class="dialog-message-template">Ok to delete {{id}}</div>
+				<div class="dialog-message-template">Ok to delete {{id}}?</div>
+				<a id="link-action-delete" href="/list/delete">Delete Link</a>
 			</div>
 		</div>
 		<form id="form-delete" action="#" method="post">
@@ -64,6 +65,10 @@
 		src="http://cdn.jsdelivr.net/webjars/datatables/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript"
 		src="http://cdn.jsdelivr.net/webjars/hoganjs/3.0.2/hogan.min.js"></script>
+	<script type="text/javascript"
+		src="http://cdn.jsdelivr.net/webjars/jquery-form/3.28.0-2013.02.06-3/jquery.form.js"></script>
+	<script type="text/javascript"
+		src="http://cdn.jsdelivr.net/webjars/sinonjs/1.7.3/sinon.js"></script>
 	<script type="text/javascript"
 		src="../../../main/webapp/resources/js/common/list.js"></script>
 	<script type="text/javascript" src="list-test.js"></script>
