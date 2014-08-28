@@ -19,8 +19,8 @@ $(function() {
 		$(".dialog-message", dialog).text(rendered);
 	}
 
-	var table_delete_row = function() {
-		var tr = $(this).parents("tr");
+	function table_delete_row(link) {
+		var tr = link.parents("tr");
 		var label = $(".list-item-label", tr).text();
 		var id = $(".list-item-id", tr).text();
 		create_delete_message(label);
@@ -65,7 +65,8 @@ $(function() {
 			$("#form-delete").ajaxSubmit(options);
 		}
 
-	};
-	$("#table").on("click", "a.link-remove", table_delete_row);
+	}
+	;
+	$("#table").on("click", "a.link-remove", table_delete_row($(this)));
 
 })
