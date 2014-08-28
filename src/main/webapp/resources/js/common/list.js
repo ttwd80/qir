@@ -66,7 +66,8 @@ $(function() {
 		}
 
 	}
-	;
-	$("#table").on("click", "a.link-remove", table_delete_row($(this)));
+	$("#table").on("click", "a.link-remove", function() {
+		table_delete_row($(this));
+	});
 
 })
