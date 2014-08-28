@@ -10,42 +10,49 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/webjars/font-awesome/4.1.0/css/font-awesome.min.css"></link>
 <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/webjars/jquery-ui-themes/1.11.0/cupertino/jquery-ui.min.css"></link>
+<link rel="stylesheet"
 	href="https://code.jquery.com/qunit/qunit-1.15.0.css">
 </head>
 <body>
 	<div id="qunit"></div>
-	<div id="qunit-fixture">
-		<div>
-			<table id="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Delete</th>
-					</tr>
+	<div id="qunit-fixture"></div>
+	<div>
+		<table id="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Delete</th>
+				</tr>
 
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td><a id="delete-link-1" class="link-remove" href="#">Delete</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="hidden">
-			<div id="dialog-confirm-delete" title="Delete confirmation">
-				<p>
-					<span class="dialog-message"></span>
-				</p>
-				<div class="hidden dialog-message-template">Ok to delete
-					{{id}}</div>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td><a id="delete-link-1" class="link-remove" href="#">Delete</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a id="delete-link-2" class="link-remove" href="#">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="hidden">
+		<div id="dialog-confirm-delete" title="Delete confirmation">
+			<p>
+				<span class="dialog-message"></span>
+			</p>
+			<div class="hidden">
+				<div id="dialog-confirm-delete-label-yes">Yes</div>
+				<div id="dialog-confirm-delete-label-no">No</div>
+				<div class="dialog-message-template">Ok to delete {{id}}</div>
 			</div>
-			<form id="form-delete" action="#" method="post">
-				<input type="hidden" name="id" class="value" value=""
-					id="form-delete-id" />
-			</form>
 		</div>
-
+		<form id="form-delete" action="#" method="post">
+			<input type="hidden" name="id" class="value" value=""
+				id="form-delete-id" />
+		</form>
 	</div>
 	<script type="text/javascript"
 		src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>

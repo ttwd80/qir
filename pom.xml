@@ -421,7 +421,7 @@
 				<version>1.5.3</version>
 				<executions>
 					<execution>
-						<phase>test</phase>
+						<phase>saga</phase>
 						<goals>
 							<goal>coverage</goal>
 						</goals>

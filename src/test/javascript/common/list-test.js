@@ -10,9 +10,10 @@ QUnit.test("delete message element initially invisible", function(assert) {
 	var message_element = $(".dialog-message", dialog_section);
 	assert.ok(message_element.is(":hidden"), "Passed!");
 });
-QUnit.test("delete message element becomes visible", function(assert) {
-	// $("#delete-link-1").click();
+QUnit.test("delete message shown upon click", function(assert) {
+	$("#delete-link-1").click();
 	var dialog_section = $("#dialog-confirm-delete");
 	var message_element = $(".dialog-message", dialog_section);
 	assert.ok(message_element.is(":visible"), "Passed!");
+	dialog_section.dialog("close");
 });

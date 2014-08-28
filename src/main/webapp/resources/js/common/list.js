@@ -30,14 +30,17 @@ $(function() {
 
 		function delete_row(tr, label) {
 			var element = $("#dialog-confirm-delete");
+			var buttons = {};
 			element.dialog("option", "buttons", [ {
-				text : "No",
-				click : function() {
+				"id" : "dialog-confirm-delete-button-no",
+				"text" : $("#dialog-confirm-delete-label-no").text(),
+				"click" : function() {
 					$(this).dialog("close");
 				}
 			}, {
-				text : "Yes",
-				click : function() {
+				"id" : "dialog-confirm-delete-button-yes",
+				"text" : $("#dialog-confirm-delete-label-yes").text(),
+				"click" : function() {
 					$(this).dialog("close");
 					execute_delete(tr, label);
 				}

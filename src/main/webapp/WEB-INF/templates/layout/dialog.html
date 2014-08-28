@@ -8,7 +8,11 @@
 			<p>
 				<span class="dialog-message"></span>
 			</p>
-			<div class="hidden dialog-message-template"
+		</div>
+		<div class="hidden">
+			<div id="dialog-confirm-delete-label-yes" th:text="#{label.yes}"></div>
+			<div id="dialog-confirm-delete-label-no" th:text="#{label.no}"></div>
+			<div class="dialog-message-template"
 				th:text="#{dialog.confirm.delete}"></div>
 		</div>
 		<form id="form-delete" action="#" method="post">
