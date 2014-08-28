@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>QUnit Example</title>
+<title>QUnit js/common/list.js</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/webjars/datatables/1.10.2/css/jquery.dataTables.min.css" />
 <link rel="stylesheet"
@@ -47,7 +47,7 @@
 				<div id="dialog-confirm-delete-label-yes">Yes</div>
 				<div id="dialog-confirm-delete-label-no">No</div>
 				<div class="dialog-message-template">Ok to delete {{id}}?</div>
-				<a id="link-action-delete" href="/list/delete">Delete Link</a>
+				<a id="link-action-delete" href="/delete-action">Delete Link</a>
 			</div>
 		</div>
 		<form id="form-delete" action="#" method="post">
@@ -68,7 +68,9 @@
 	<script type="text/javascript"
 		src="http://cdn.jsdelivr.net/webjars/jquery-form/3.28.0-2013.02.06-3/jquery.form.js"></script>
 	<script type="text/javascript"
-		src="http://cdn.jsdelivr.net/webjars/sinonjs/1.7.3/sinon.js"></script>
+		src="http://sinonjs.org/releases/sinon-1.10.3.js"></script>
+	<script type="text/javascript"
+		src="http://sinonjs.org/releases/sinon-qunit-1.0.0.js"></script>
 	<script type="text/javascript"
 		src="../../../main/webapp/resources/js/common/list.js"></script>
 	<script type="text/javascript" src="list-test.js"></script>

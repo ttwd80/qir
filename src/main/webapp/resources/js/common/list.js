@@ -52,8 +52,13 @@ $(function() {
 		function execute_delete(tr, label) {
 			var options = {
 				"dataType" : "json",
+				"error" : function(xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				},
 				"success" : function(object, statusText, xhr, $form) {
 					if (object.status == "success") {
+						dataTable.draw();
 						var row = dataTable.row(tr);
 						row.remove().draw();
 					} else {
@@ -63,9 +68,11 @@ $(function() {
 					}
 				}
 			};
-			$("#form-delete").ajaxSubmit(options);
+			$("body").append("<div>AJAX<div>");
+			var form = $("#form-delete");
+			options["url"] = form.attr("action");
+			form.ajaxSubmit(options);
 		}
-
 	}
 
 	$("#table").on("click", "a.link-remove", function(e) {
