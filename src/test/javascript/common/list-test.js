@@ -37,36 +37,35 @@ QUnit.test("message row #6", function(assert) {
 	$("#dialog-confirm-remove-button-no").trigger(jQuery.Event("click"));
 });
 
-QUnit.module("Test delete item");
-QUnit.test("will reduces the row count", function(assert) {
-	var response = {
-		"status" : "success",
-		"id" : 1
-	};
+QUnit.module("Test delete item removal Ok", {
+	setup : function() {
+		var response = {
+			"status" : "success",
+			"id" : 1
+		};
 
-	sinon.stub(jQuery, "ajax").yieldsTo("success", response);
+		sinon.stub(jQuery, "ajax").yieldsTo("success", response);
+	},
+	teardown : function() {
+		jQuery.ajax.restore();
+	}
+});
+QUnit.test("will reduces the row count", function(assert) {
 
 	assert.equal($("#table tbody tr").length, 6, "6 rows before delete");
 
 	$("#delete-link-1").trigger(jQuery.Event("click"));
 	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
 	assert.equal($("#table tbody tr").length, 5, "5 row after delete");
-	jQuery.ajax.restore();
 });
 
 QUnit.test("will remove the element", function(assert) {
-	var response = {
-		"status" : "success",
-		"id" : 1
-	};
-
-	sinon.stub(jQuery, "ajax").yieldsTo("success", response);
-
 	assert.equal($("#table tbody tr").length, 6, "6 rows before delete");
 
 	assert.equal($("#delete-link-1").length, 1, "item exists");
 	$("#delete-link-1").trigger(jQuery.Event("click"));
 	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
 	assert.equal($("#delete-link-1").length, 0, "item has been deleted");
-	jQuery.ajax.restore();
 });
+
+QUnit.module("Test delete item removal failure");
