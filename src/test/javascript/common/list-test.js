@@ -67,6 +67,7 @@ QUnit.test("click no will close the dialog", function(assert) {
 	assert.ok(message_element.is(":hidden"), "Message is not visible");
 });
 
+QUnit.module("F");
 QUnit.test("click yes will delete the row", function(assert) {
 	var response = {
 		"status" : "success"
@@ -84,4 +85,19 @@ QUnit.test("click yes will delete the row", function(assert) {
 	assert.ok(message_element.is(":hidden"), "Message is not visible");
 	assert.equal($("#table tbody tr").length, 1, "1 row after delete");
 
+});
+
+QUnit.module("X");
+QUnit.test("fixture on data table", function(assert) {
+	assert.ok(!$.fn.dataTable.isDataTable("#fixed-table"),
+			"initially not data table");
+	$("#fixed-table").DataTable({});
+	assert.ok($.fn.dataTable.isDataTable("#fixed-table"), "data table");
+});
+QUnit.test("fixture on data table 2", function(assert) {
+	assert.ok(!$.fn.dataTable.isDataTable("#fixed-table"),
+			"initially not data table");
+	$("#fixed-table").DataTable({});
+	
+	assert.ok($.fn.dataTable.isDataTable("#fixed-table"), "data table");
 });

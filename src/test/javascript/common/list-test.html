@@ -4,19 +4,38 @@
 <meta charset="utf-8">
 <title>QUnit js/common/list.js</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/datatables/1.10.2/css/jquery.dataTables.min.css" />
+	href="https://cdn.jsdelivr.net/webjars/datatables/1.10.2/css/jquery.dataTables.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/bootswatch-cerulean/3.2.0/css/bootstrap.min.css" />
+	href="https://cdn.jsdelivr.net/webjars/bootswatch-cerulean/3.2.0/css/bootstrap.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/font-awesome/4.1.0/css/font-awesome.min.css" />
+	href="https://cdn.jsdelivr.net/webjars/font-awesome/4.1.0/css/font-awesome.css" />
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/webjars/jquery-ui-themes/1.11.0/cupertino/jquery-ui.min.css" />
+	href="https://cdn.jsdelivr.net/webjars/jquery-ui-themes/1.11.0/cupertino/jquery-ui.css" />
 <link rel="stylesheet"
 	href="https://code.jquery.com/qunit/qunit-1.15.0.css" />
 </head>
 <body>
 	<div id="qunit"></div>
-	<div id="qunit-fixture"></div>
+	<div id="qunit-fixture">
+		<table id="fixed-table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>#2</td>
+					<td>Delete</td>
+				</tr>
+				<tr>
+					<td>#2</td>
+					<td>Delete</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<div>
 		<table id="table">
 			<thead>
@@ -58,13 +77,13 @@
 	<script type="text/javascript"
 		src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>
 	<script type="text/javascript"
-		src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"></script>
+		src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.js"></script>
 	<script type="text/javascript"
-		src="http://cdn.jsdelivr.net/webjars/jquery-ui/1.11.0/jquery-ui.min.js"></script>
+		src="http://cdn.jsdelivr.net/webjars/jquery-ui/1.11.0/jquery-ui.js"></script>
 	<script type="text/javascript"
-		src="http://cdn.jsdelivr.net/webjars/datatables/1.10.2/js/jquery.dataTables.min.js"></script>
+		src="http://cdn.jsdelivr.net/webjars/datatables/1.10.2/js/jquery.dataTables.js"></script>
 	<script type="text/javascript"
-		src="http://cdn.jsdelivr.net/webjars/hoganjs/3.0.2/hogan.min.js"></script>
+		src="http://cdn.jsdelivr.net/webjars/hoganjs/3.0.2/hogan.js"></script>
 	<script type="text/javascript"
 		src="http://cdn.jsdelivr.net/webjars/jquery-form/3.28.0-2013.02.06-3/jquery.form.js"></script>
 	<script type="text/javascript"
