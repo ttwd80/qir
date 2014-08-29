@@ -1,8 +1,9 @@
 $(function() {
 	var dataTable = $("#table").DataTable({});
 
-	$("a.link-remove").click(function() {
+	$("body").on("click", "#table tbody tr td a.link-remove", function() {
 		var tr = $(this).parents(tr);
+		alert(tr.html());
 		dataTable.row(tr).remove().draw();
 	});
 });
