@@ -54,20 +54,20 @@
 		</table>
 	</div>
 	<div class="hidden">
-		<div id="dialog-confirm-delete" title="Delete confirmation">
+		<div id="dialog-confirm-remove" title="Delete confirmation">
 			<p>
 				<span class="dialog-message"></span>
 			</p>
 			<div class="hidden">
-				<div id="dialog-confirm-delete-label-yes">Yes</div>
-				<div id="dialog-confirm-delete-label-no">No</div>
+				<div id="dialog-confirm-remove-label-yes">Yes</div>
+				<div id="dialog-confirm-remove-label-no">No</div>
 				<div class="dialog-message-template">Ok to delete {{id}}?</div>
-				<a id="link-action-delete" href="/delete-action">Delete Link</a>
+				<a id="link-action-remove" href="/delete-action">Delete Link</a>
 			</div>
 		</div>
-		<form id="form-delete" action="#" method="post">
+		<form id="form-remove" action="#" method="post">
 			<input type="hidden" name="id" class="value" value=""
-				id="form-delete-id" />
+				id="form-remove-id" />
 		</form>
 	</div>
 
@@ -90,6 +90,5 @@
 	<script type="text/javascript"
 		src="../../../main/webapp/resources/js/common/list.js"></script>
 	<script type="text/javascript" src="list-test.js"></script>
-	<div>Done</div>
 </body>
 </html>

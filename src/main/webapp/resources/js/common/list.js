@@ -5,46 +5,47 @@
  */
 $(function() {
 	init_data_table();
-	init_dialog_confirm_delete();
-	init_form_delete_action();
-	init_handle_table_delete_row_dialog();
-	init_handle_table_delete_row_dialog_response();
+	init_dialog_confirm_remove();
+	init_form_remove_action();
+	init_handle_table_remove_row_dialog();
 
 	function init_data_table() {
 		$("#table").DataTable({});
 	}
 
-	function init_dialog_confirm_delete() {
-		$("#dialog-confirm-delete").dialog({
+	function init_dialog_confirm_remove() {
+		var options = {
 			"resizable" : false,
 			"autoOpen" : false,
 			"modal" : true
-		});
+		};
+		$("#dialog-confirm-remove").dialog(options);
 	}
 
-	function init_form_delete_action() {
-		$("#form-delete").attr("action", $("#link-action-delete").attr("href"));
+	function init_form_remove_action() {
+		$("#form-remove").attr("action", $("#link-action-remove").attr("href"));
 	}
 
-	function init_handle_table_delete_row_dialog() {
-		$("body").on("click", "#table a.link-remove", handle_table_delete_row);
+	function init_handle_table_remove_row_dialog() {
+		$("body").on("click", "#table > tbody a.link-remove",
+				handle_table_remove_row);
 
-		function handle_table_delete_row(event) {
+		function handle_table_remove_row(event) {
 			event.preventDefault();
-			table_delete_row($(event.currentTarget));
+			table_remove_row($(event.currentTarget));
 		}
 
-		function table_delete_row(link) {
+		function table_remove_row(link) {
 			var tr = link.parents("tr");
 			var label = $(".list-item-label", tr).text();
 			var id = $(".list-item-id", tr).text();
-			create_delete_message(label);
-			$("#form-delete-id").val(id);
-			show_delete_row_dialog(tr, label);
+			create_remove_message(label);
+			$("#form-remove-id").val(id);
+			show_remove_row_dialog(tr, label);
 		}
 
-		function create_delete_message(label) {
-			var dialog = $("#dialog-confirm-delete");
+		function create_remove_message(label) {
+			var dialog = $("#dialog-confirm-remove");
 			var text = $(".dialog-message-template", dialog).text();
 			var data = {
 				"id" : label
@@ -54,45 +55,40 @@ $(function() {
 			$(".dialog-message", dialog).text(rendered);
 		}
 
-		function show_delete_row_dialog(tr, label) {
-			var element = $("#dialog-confirm-delete");
+		function show_remove_row_dialog(tr, label) {
+			var element = $("#dialog-confirm-remove");
 			var button_no = {
-				"id" : "dialog-confirm-delete-button-no",
-				"text" : $("#dialog-confirm-delete-label-no").text(),
+				"id" : "dialog-confirm-remove-button-no",
+				"text" : $("#dialog-confirm-remove-label-no").text(),
+				"click" : dialog_box_confirm_remove_close
 			};
 			var button_yes = {
-				"id" : "dialog-confirm-delete-button-yes",
-				"text" : $("#dialog-confirm-delete-label-yes").text(),
+				"id" : "dialog-confirm-remove-button-yes",
+				"text" : $("#dialog-confirm-remove-label-yes").text(),
+				"click" : dialog_box_confirm_remove_execute
 			};
 			var buttons = [ button_no, button_yes ];
 			element.dialog("option", "buttons", buttons);
 			element.dialog("open");
 		}
-	}
 
-	function init_handle_table_delete_row_dialog_response() {
-		$("body").on("click", "#dialog-confirm-delete-button-no",
-				dialog_box_confirm_delete_close);
-
-		$("body").on("click", "#dialog-confirm-delete-button-yes",
-				dialog_box_confirm_delete_execute);
-
-		function dialog_box_confirm_delete_close() {
-			$("#dialog-confirm-delete").dialog("close");
+		function dialog_box_confirm_remove_close() {
+			var element = $("#dialog-confirm-remove");
+			element.dialog("close");
 		}
 
-		function dialog_box_confirm_delete_execute() {
-			dialog_box_confirm_delete_close();
-			execute_delete();
+		function dialog_box_confirm_remove_execute() {
+			dialog_box_confirm_remove_close();
+			execute_remove();
 		}
 
-		function execute_delete() {
+		function execute_remove() {
 			var options = {
 				"dataType" : "json",
 				"error" : show_error_message,
-				"success" : execute_delete_success
+				"success" : execute_remove_success
 			};
-			var form = $("#form-delete");
+			var form = $("#form-remove");
 			options["url"] = form.attr("action");
 			form.ajaxSubmit(options);
 		}
@@ -101,7 +97,7 @@ $(function() {
 			// TODO error message
 		}
 
-		function execute_delete_success(object, statusText, xhr, $form) {
+		function execute_remove_success(object, statusText, xhr, $form) {
 			if (object.status == "success") {
 				remove_table_row(object.id);
 			} else {
@@ -121,11 +117,13 @@ $(function() {
 		}
 
 		function find_row_by_item_id(id) {
-			var selector = "span.list-item-id:contains('" + id + "')";
+			var selector = "#table > tbody span.list-item-id:contains('" + id
+					+ "')";
 			var span = $(selector).filter(function() {
 				return $(this).text() == id;
-			})
-			return span.parents("tr");
+			});
+			var tr = span.parents("tr");
+			return tr;
 		}
 	}
 
