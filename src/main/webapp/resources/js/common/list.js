@@ -68,14 +68,13 @@ $(function() {
 					}
 				}
 			};
-			$("body").append("<div>AJAX<div>");
 			var form = $("#form-delete");
 			options["url"] = form.attr("action");
 			form.ajaxSubmit(options);
 		}
 	}
 
-	$("#table").on("click", "a.link-remove", function(e) {
+	$("body").on("click", "#table a.link-remove", function(e) {
 		e.preventDefault();
 		table_delete_row($(this));
 		return false;
