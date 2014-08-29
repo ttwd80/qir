@@ -430,7 +430,7 @@
 				<configuration>
 					<baseDir>src</baseDir>
 					<includes>**/*-test.html</includes>
-					<outputDir>${project.build.directory}/coverage</outputDir>
+					<outputDir>${project.build.directory}/site/cobertura</outputDir>
 					<noInstrumentPatterns>
 						<pattern>http.+</pattern>
 						<pattern>.*-test.js</pattern>
