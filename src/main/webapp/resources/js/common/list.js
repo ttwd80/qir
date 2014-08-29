@@ -6,6 +6,7 @@
 $(function() {
 	init_data_table();
 	init_dialog_confirm_remove();
+	init_dialog_error_remove();
 	init_form_remove_action();
 	init_handle_table_remove_row_dialog();
 
@@ -20,6 +21,29 @@ $(function() {
 			"modal" : true
 		};
 		$("#dialog-confirm-remove").dialog(options);
+	}
+
+	function init_dialog_error_remove() {
+		var button_ok = {
+			"id" : "dialog-error-remove-button-ok",
+			"text" : $("#dialog-error-remove-label-ok").text(),
+			"click" : dialog_box_error_remove_close
+		};
+
+		var buttons = [ button_ok ];
+		var options = {
+			"buttons" : buttons,
+			"resizable" : false,
+			"autoOpen" : false,
+			"modal" : true
+		};
+
+		$("#dialog-error-remove").dialog(options);
+
+		function dialog_box_error_remove_close() {
+			var element = $("#dialog-error-remove");
+			element.dialog("close");
+		}
 	}
 
 	function init_form_remove_action() {
@@ -94,7 +118,8 @@ $(function() {
 		}
 
 		function show_error_message() {
-			// TODO error message
+			var element = $("#dialog-error-remove");
+			element.dialog("open");
 		}
 
 		function execute_remove_success(object, statusText, xhr, $form) {
@@ -107,7 +132,7 @@ $(function() {
 
 		function remove_table_row(item_id) {
 			var tr = find_row_by_item_id(item_id);
-			if (tr != null) {
+			if (tr.length == 1) {
 				var dataTable = $("#table").DataTable();
 				var row = dataTable.row(tr);
 				row.remove().draw();

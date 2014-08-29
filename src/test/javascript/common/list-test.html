@@ -54,21 +54,34 @@
 		</table>
 	</div>
 	<div class="hidden">
-		<div id="dialog-confirm-remove" title="Delete confirmation">
-			<p>
-				<span class="dialog-message"></span>
-			</p>
-			<div class="hidden">
-				<div id="dialog-confirm-remove-label-yes">Yes</div>
-				<div id="dialog-confirm-remove-label-no">No</div>
-				<div class="dialog-message-template">Ok to delete {{id}}?</div>
-				<a id="link-action-remove" href="/delete-action">Delete Link</a>
+		<div>
+			<div id="dialog-confirm-remove" title="Delete confirmation">
+				<p>
+					<span class="dialog-message"></span>
+				</p>
+				<div class="hidden">
+					<div id="dialog-confirm-remove-label-yes">Yes</div>
+					<div id="dialog-confirm-remove-label-no">No</div>
+					<div class="dialog-message-template">Ok to delete {{id}}?</div>
+					<a id="link-action-remove" href="/delete-action">Delete Link</a>
+				</div>
+			</div>
+			<form id="form-remove" action="#" method="post">
+				<input type="hidden" name="id" class="value" value=""
+					id="form-remove-id" />
+			</form>
+		</div>
+		<div>
+			<div id="dialog-error-remove" title="Delete error">
+				<p>
+					<span class="dialog-message">Delete error </span>
+				</p>
+				<div class="hidden">
+					<div id="dialog-error-remove-label-ok">OK</div>
+				</div>
 			</div>
 		</div>
-		<form id="form-remove" action="#" method="post">
-			<input type="hidden" name="id" class="value" value=""
-				id="form-remove-id" />
-		</form>
+
 	</div>
 
 	<script type="text/javascript"

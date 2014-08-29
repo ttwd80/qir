@@ -61,11 +61,76 @@ QUnit.test("will reduces the row count", function(assert) {
 
 QUnit.test("will remove the element", function(assert) {
 	assert.equal($("#table tbody tr").length, 6, "6 rows before delete");
-
 	assert.equal($("#delete-link-1").length, 1, "item exists");
 	$("#delete-link-1").trigger(jQuery.Event("click"));
 	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
 	assert.equal($("#delete-link-1").length, 0, "item has been deleted");
 });
 
-QUnit.module("Test delete item removal failure");
+QUnit.module("dialog error");
+QUnit.test("initially empty", function(assert) {
+	assert.ok($("#dialog-confirm-remove").is(":hidden"), "Passed!");
+});
+QUnit.test("shown on non-json", function(assert) {
+	var server = this.sandbox.useFakeServer();
+	server.respondWith("POST", "/delete-action", [ 200, {
+		"Content-Type" : "text/html"
+	}, 'please login' ]);
+	// dialog-error-remove
+	assert.ok($("#dialog-error-remove").is(":hidden"), "initially hidden");
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	server.respond();
+	assert.ok($("#dialog-error-remove").is(":visible"), "then shown");
+	$("#dialog-error-remove").dialog("close");
+	assert.ok($("#dialog-error-remove").is(":hidden"), "then hidden again");
+});
+QUnit.test("shown on valid error", function(assert) {
+	var server = this.sandbox.useFakeServer();
+	var response = {
+		"status" : "error"
+	};
+	server.respondWith("POST", "/delete-action", [ 200, {
+		"Content-Type" : "application/json"
+	}, JSON.stringify(response) ]);
+	// dialog-error-remove
+	assert.ok($("#dialog-error-remove").is(":hidden"), "initially hidden");
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	server.respond();
+	assert.ok($("#dialog-error-remove").is(":visible"), "then shown");
+	$("#dialog-error-remove").dialog("close");
+	assert.ok($("#dialog-error-remove").is(":hidden"), "then hidden again");
+});
+QUnit.test("shown on server return invalid id", function(assert) {
+	var server = this.sandbox.useFakeServer();
+	var response = {
+		"status" : "success",
+		"id" : 1000
+	};
+	server.respondWith("POST", "/delete-action", [ 200, {
+		"Content-Type" : "application/json"
+	}, JSON.stringify(response) ]);
+	// dialog-error-remove
+	assert.ok($("#dialog-error-remove").is(":hidden"), "initially hidden");
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	server.respond();
+	assert.ok($("#dialog-error-remove").is(":visible"), "then shown");
+	$("#dialog-error-remove").dialog("close");
+	assert.ok($("#dialog-error-remove").is(":hidden"), "then hidden again");
+});
+QUnit.test("shown then dismissed on button click", function(assert) {
+	var server = this.sandbox.useFakeServer();
+	server.respondWith("POST", "/delete-action", [ 200, {
+		"Content-Type" : "text/html"
+	}, 'please login' ]);
+	// dialog-error-remove
+	assert.ok($("#dialog-confirm-remove").is(":hidden"), "initially hidden");
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	server.respond();
+	assert.ok($("#dialog-error-remove").is(":visible"), "then shown");
+	$("#dialog-error-remove-button-ok").trigger(jQuery.Event("click"));
+	assert.ok($("#dialog-error-remove").is(":hidden"), "then hidden again");
+});

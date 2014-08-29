@@ -4,21 +4,34 @@
 </head>
 <body>
 	<div th:fragment="dialog-remove" class="hidden">
-		<div id="dialog-confirm-remove" title="Delete confirmation">
-			<p>
-				<span class="dialog-message"></span>
-			</p>
-			<div class="hidden">
-				<div id="dialog-confirm-remove-label-yes" th:text="#{label.yes}"></div>
-				<div id="dialog-confirm-remove-label-no" th:text="#{label.no}"></div>
-				<div class="dialog-message-template"
-					th:text="#{dialog.confirm.delete}"></div>
+		<div>
+			<div id="dialog-confirm-remove" title="Delete confirmation">
+				<p>
+					<span class="dialog-message"></span>
+				</p>
+				<div class="hidden">
+					<div id="dialog-confirm-remove-label-yes" th:text="#{label.yes}"></div>
+					<div id="dialog-confirm-remove-label-no" th:text="#{label.no}"></div>
+					<div class="dialog-message-template"
+						th:text="#{dialog.confirm.delete}"></div>
+				</div>
+			</div>
+			<form id="form-remove" action="#" method="post">
+				<input type="hidden" name="id" class="value" value=""
+					id="form-remove-id" />
+			</form>
+		</div>
+		<div>
+			<div id="dialog-error-remove" title="Delete error"
+				class="ui-state-error">
+				<p>
+					<span class="dialog-message" th:text="#{dialog.error.delete}"></span>
+				</p>
+				<div class="hidden">
+					<div id="dialog-error-remove-label-ok" th:text="#{label.ok}"></div>
+				</div>
 			</div>
 		</div>
-		<form id="form-remove" action="#" method="post">
-			<input type="hidden" name="id" class="value" value=""
-				id="form-remove-id" />
-		</form>
 	</div>
 </body>
 </html>
