@@ -14,6 +14,5 @@ QUnit.test("table contains 6 rows", function(assert) {
 });
 QUnit.test("table contains 5 rows after click delete", function(assert) {
 	$("#delete-link-4").click();
-	alert("clicked");
 	assert.equal(5, $("#table tbody tr").length, "Passed!");
 });
