@@ -1,8 +1,6 @@
-var create_validation;
 $(function() {
 	$("form.bv-form").each(function(index, element) {
 		$form = $(element);
-		create_validation = create_form_validation;
 		var obj = create_form_validation($form);
 		$form.bootstrapValidator(obj);
 	})
