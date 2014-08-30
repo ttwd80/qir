@@ -1,40 +1,55 @@
-QUnit.module("Test DataTable");
-QUnit.test("table is a datatable", function(assert) {
+/**
+ * Documentation
+ */
+QUnit.module("On Document Ready");
+QUnit.test("data table is created from #table", function(assert) {
 	assert.ok($("#table").hasClass("dataTable"), "Passed!");
 });
 
-QUnit.module("Test delete message dialog visibility");
-QUnit.test("initially invisible", function(assert) {
-	var dialog_section = $("#dialog-confirm-remove");
-	var message_element = $(".dialog-message", dialog_section);
-	assert.ok(message_element.is(":hidden"), "Passed!");
+QUnit.test("delete prompt dialog is created (invisible)", function(assert) {
+	var dialog = $("#dialog-confirm-remove");
+	assert.ok(dialog.hasClass("ui-dialog-content"), "Element is a dialog");
+	assert.ok(dialog.is(":hidden"), "Dialog is hidden");
+});
+QUnit.test("error message dialog is created (invisible)", function(assert) {
+	var dialog = $("#dialog-error-remove");
+	assert.ok(dialog.hasClass("ui-dialog-content"), "Element is a dialog");
+	assert.ok(dialog.is(":hidden"), "Dialog is hidden");
 });
 
+QUnit.module("Dialog confirm remove");
 QUnit.test("shown upon click", function(assert) {
-	var dialog_section = $("#dialog-confirm-remove");
-	var message_element = $(".dialog-message", dialog_section);
-	assert.ok(message_element.is(":hidden"), "Initially hidden");
+	var dialog = $("#dialog-confirm-remove");
+	assert.ok(dialog.is(":hidden"), "Initially hidden");
 	$("#delete-link-1").trigger(jQuery.Event("click"));
-	assert.ok(message_element.is(":visible"),
-			"Visible when delete link is clicked");
+	assert.ok(dialog.is(":visible"), "Visible when delete link is clicked");
 	$("#dialog-confirm-remove-button-no").trigger(jQuery.Event("click"));
-	assert.ok(message_element.is(":hidden"), "Hidden when no is clicked");
+	dialog.dialog("close");
+});
+QUnit.test("closed with button [no] is clicked", function(assert) {
+	var dialog = $("#dialog-confirm-remove");
+	assert.ok(dialog.is(":hidden"), "Initially hidden");
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	assert.ok(dialog.is(":visible"), "Visible when delete link is clicked");
+	$("#dialog-confirm-remove-button-no").trigger(jQuery.Event("click"));
+	dialog.dialog("close");
+	assert.ok(dialog.is(":hidden"), "Hidden when no is clicked");
 });
 
-QUnit.module("Test delete message dialog message");
+QUnit.module("Dialog confirm-delete, test prompt message");
 QUnit.test("message row #2", function(assert) {
 	$("#delete-link-2").trigger(jQuery.Event("click"));
-	var dialog_section = $("#dialog-confirm-remove");
-	var message_element = $(".dialog-message", dialog_section);
+	var dialog = $("#dialog-confirm-remove");
+	var message_element = $(".dialog-message", dialog);
 	assert.equal(message_element.text(), "Ok to delete 2?", "Passed!");
-	$("#dialog-confirm-remove-button-no").trigger(jQuery.Event("click"));
+	dialog.dialog("close");
 });
 QUnit.test("message row #6", function(assert) {
 	$("#delete-link-6").trigger(jQuery.Event("click"));
-	var dialog_section = $("#dialog-confirm-remove");
-	var message_element = $(".dialog-message", dialog_section);
+	var dialog = $("#dialog-confirm-remove");
+	var message_element = $(".dialog-message", dialog);
 	assert.equal(message_element.text(), "Ok to delete 6?", "Passed!");
-	$("#dialog-confirm-remove-button-no").trigger(jQuery.Event("click"));
+	dialog.dialog("close");
 });
 
 QUnit.module("Test delete item removal Ok", {
@@ -50,7 +65,7 @@ QUnit.module("Test delete item removal Ok", {
 		jQuery.ajax.restore();
 	}
 });
-QUnit.test("will reduces the row count", function(assert) {
+QUnit.test("reduces the row count", function(assert) {
 
 	assert.equal($("#table tbody tr").length, 6, "6 rows before delete");
 

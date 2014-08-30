@@ -1,8 +1,3 @@
-/**
- * 1. create the data table on document ready
- * 
- * 2. show delete prompt when [a.link-remove] is clicked
- */
 $(function() {
 	init_data_table();
 	init_dialog_confirm_remove();
