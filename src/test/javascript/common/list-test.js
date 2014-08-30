@@ -134,3 +134,29 @@ QUnit.test("shown then dismissed on button click", function(assert) {
 	$("#dialog-error-remove-button-ok").trigger(jQuery.Event("click"));
 	assert.ok($("#dialog-error-remove").is(":hidden"), "then hidden again");
 });
+
+QUnit.module("post data");
+QUnit.test("delete item 1 will post id=1", function(assert) {
+	var response = {
+		"status" : "success",
+		"id" : 1
+	};
+
+	sinon.stub(jQuery, "ajax").yieldsTo("success", response);
+	$("#delete-link-1").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	assert.equal(jQuery.ajax.getCall(0).args[0].data, "id=1", "Passed!");
+	jQuery.ajax.restore();
+});
+QUnit.test("delete item 3 will post id=3", function(assert) {
+	var response = {
+		"status" : "success",
+		"id" : 3
+	};
+
+	sinon.stub(jQuery, "ajax").yieldsTo("success", response);
+	$("#delete-link-3").trigger(jQuery.Event("click"));
+	$("#dialog-confirm-remove-button-yes").trigger(jQuery.Event("click"));
+	assert.equal(jQuery.ajax.getCall(0).args[0].data, "id=3", "Passed!");
+	jQuery.ajax.restore();
+});
