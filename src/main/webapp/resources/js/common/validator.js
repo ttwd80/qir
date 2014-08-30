@@ -3,14 +3,15 @@ $(function() {
 		$form = $(element);
 		var obj = create_form_validation($form);
 		$form.bootstrapValidator(obj);
-	})
+	});
 
-	var create_form_validation = function(form) {
+	function create_form_validation(form) {
 		var obj = {
+			"trigger" : "keyup",
 			"feedbackIcons" : {
-				valid : 'glyphicon glyphicon-ok',
-				invalid : 'glyphicon glyphicon-remove',
-				validating : 'glyphicon glyphicon-refresh'
+				"valid" : 'glyphicon glyphicon-ok',
+				"invalid" : 'glyphicon glyphicon-remove',
+				"validating" : 'glyphicon glyphicon-refresh'
 			},
 			"fields" : create_fields_object(form)
 		};
