@@ -370,8 +370,9 @@
 				<configuration>
 					<container>
 						<containerId>tomcat8x</containerId>
+						<timeout>300000</timeout>
 						<zipUrlInstaller>
-							<url>http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.9/bin/apache-tomcat-8.0.9.zip</url>
+							<url>http://mirrors.sonic.net/apache/tomcat/tomcat-8/v8.0.12/bin/apache-tomcat-8.0.12.zip</url>
 						</zipUrlInstaller>
 					</container>
 					<configuration>
@@ -397,7 +398,7 @@
 							<goal>start</goal>
 						</goals>
 						<configuration>
-							<timeout>300000</timeout>
+							<timeout>450000</timeout>
 						</configuration>
 					</execution>
 					<execution>
