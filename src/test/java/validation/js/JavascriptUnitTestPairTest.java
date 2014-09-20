@@ -25,7 +25,7 @@ public class JavascriptUnitTestPairTest {
 	private String JS_BASE_MAIN = "./src/main/webapp/resources/js";
 	private String JS_BASE_TEST = "./src/test/javascript";
 	private String JS_EXT = "*.js";
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Test
 	public void testValidation() throws IOException {
