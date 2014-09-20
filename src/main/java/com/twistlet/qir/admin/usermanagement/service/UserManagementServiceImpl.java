@@ -10,12 +10,12 @@ import com.twistlet.qir.common.model.repository.UserRepository;
 @Service
 public class UserManagementServiceImpl implements UserManagementService {
 
-	private PasswordEncoder passwordEncoder;
-	private UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
 
 	@Autowired
-	public UserManagementServiceImpl(PasswordEncoder passwordEncoder,
-			UserRepository userRepository) {
+	public UserManagementServiceImpl(final PasswordEncoder passwordEncoder,
+			final UserRepository userRepository) {
 		this.passwordEncoder = passwordEncoder;
 		this.userRepository = userRepository;
 	}
@@ -26,15 +26,20 @@ public class UserManagementServiceImpl implements UserManagementService {
 	}
 
 	@Override
-	public void create(User user, String rawPassword) {
-		String encodedPassword = passwordEncoder.encode(rawPassword);
+	public void create(final User user, final String rawPassword) {
+		final String encodedPassword = passwordEncoder.encode(rawPassword);
 		user.setPassword(encodedPassword);
 		userRepository.save(user);
 	}
 
 	@Override
-	public void remove(String id) {
+	public void remove(final String id) {
 		userRepository.delete(id);
+	}
+
+	@Override
+	public User get(final String id) {
+		return userRepository.findOne(id);
 	}
 
 }

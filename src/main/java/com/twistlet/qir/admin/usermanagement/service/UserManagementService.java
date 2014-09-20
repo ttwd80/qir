@@ -8,4 +8,6 @@ public interface UserManagementService {
 	void create(User user, String rawPassword);
 
 	void remove(String id);
+
+	User get(String id);
 }

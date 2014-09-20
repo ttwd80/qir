@@ -19,32 +19,33 @@ import com.twistlet.qir.common.model.entity.User;
 @Controller
 public class UserManagementController {
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	private UserManagementService userManagementService;
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final UserManagementService userManagementService;
 
 	@Autowired
-	public UserManagementController(UserManagementService userManagementService) {
+	public UserManagementController(
+			final UserManagementService userManagementService) {
 		this.userManagementService = userManagementService;
 	}
 
 	@RequestMapping("/admin/user/list")
 	public ModelAndView list() {
-		Iterable<User> list = userManagementService.listUser();
-		ModelAndView mav = new ModelAndView();
+		final Iterable<User> list = userManagementService.listUser();
+		final ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		return mav;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/admin/user/remove", method = RequestMethod.POST)
-	public Map<String, String> remove(@RequestParam("id") String id) {
-		Map<String, String> map = new LinkedHashMap<String, String>();
+	public Map<String, String> remove(@RequestParam("id") final String id) {
+		final Map<String, String> map = new LinkedHashMap<String, String>();
 		try {
 			userManagementService.remove(id);
 			map.put("status", "success");
 			map.put("id", id);
 			return map;
-		} catch (RuntimeException e) {
+		} catch (final RuntimeException e) {
 			logger.error(e.toString());
 			map.put("status", "error");
 			map.put("message", e.toString());
@@ -52,4 +53,11 @@ public class UserManagementController {
 		return map;
 	}
 
+	@RequestMapping("/admin/user/password-change")
+	public ModelAndView passwordChange(@RequestParam("id") final String id) {
+		final ModelAndView mav = new ModelAndView();
+		final User user = userManagementService.get(id);
+		mav.addObject(user);
+		return mav;
+	}
 }

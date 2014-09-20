@@ -47,7 +47,8 @@
 										th:text="${item.username}">?id?</span></a></td>
 								<td><span th:text="${item.fullname}">?name?</span></td>
 								<td><span th:text="#{label.edit}">?roles?</span></td>
-								<td><a href="#" class="link-change-password"
+								<td><a class="link-change-password"
+									th:href="@{/admin/user/password-change(id=${item.username})}"
 									th:text="#{label.change}">?change?</a></td>
 								<td><a href="#" class="link-remove btn-danger"><span
 										th:title="#{label.remove}" class="fa fa-fw fa-2 fa-times"></span></a></td>

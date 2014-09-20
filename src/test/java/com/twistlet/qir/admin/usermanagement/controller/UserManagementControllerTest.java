@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hamcrest.core.IsSame;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -42,9 +43,9 @@ public class UserManagementControllerTest {
 
 	@Test
 	public void testList() {
-		ModelAndView mav = sut.list();
+		final ModelAndView mav = sut.list();
 		@SuppressWarnings("unchecked")
-		List<User> list = (List<User>) mav.getModel().get("list");
+		final List<User> list = (List<User>) mav.getModel().get("list");
 		assertEquals(4, list.size());
 	}
 
@@ -52,19 +53,28 @@ public class UserManagementControllerTest {
 	public void testRemoveError() throws JsonProcessingException {
 		doThrow(new RuntimeException("ignore: fake exception on delete user"))
 				.when(userManagementService).remove("1");
-		Map<String, String> map = sut.remove("1");
-		ObjectMapper objectMapper = new ObjectMapper();
-		String actual = objectMapper.writeValueAsString(map);
-		String expected = "{\"status\":\"error\",\"message\":\"java.lang.RuntimeException: ignore: fake exception on delete user\"}";
+		final Map<String, String> map = sut.remove("1");
+		final ObjectMapper objectMapper = new ObjectMapper();
+		final String actual = objectMapper.writeValueAsString(map);
+		final String expected = "{\"status\":\"error\",\"message\":\"java.lang.RuntimeException: ignore: fake exception on delete user\"}";
 		assertThat(actual, equalTo(expected));
 	}
 
 	@Test
 	public void testRemoveSuccess() throws JsonProcessingException {
-		Map<String, String> map = sut.remove("1");
-		ObjectMapper objectMapper = new ObjectMapper();
-		String actual = objectMapper.writeValueAsString(map);
-		String expected = "{\"status\":\"success\",\"id\":\"1\"}";
+		final Map<String, String> map = sut.remove("1");
+		final ObjectMapper objectMapper = new ObjectMapper();
+		final String actual = objectMapper.writeValueAsString(map);
+		final String expected = "{\"status\":\"success\",\"id\":\"1\"}";
 		assertThat(actual, equalTo(expected));
+	}
+
+	@Test
+	public void testPasswordChange() {
+		final User user = new User();
+		user.setFullname("Bill Joy");
+		when(userManagementService.get("abc")).thenReturn(user);
+		final ModelAndView mav = sut.passwordChange("abc");
+		assertThat(mav.getModel().get("user"), IsSame.sameInstance(user));
 	}
 }

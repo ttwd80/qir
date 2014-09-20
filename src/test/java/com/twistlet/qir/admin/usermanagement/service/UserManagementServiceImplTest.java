@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
+import org.hamcrest.core.IsSame;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -36,7 +37,7 @@ public class UserManagementServiceImplTest {
 
 	@Test
 	public void testListUser() {
-		Iterable<User> listFromSutCall = sut.listUser();
+		final Iterable<User> listFromSutCall = sut.listUser();
 		assertThat(listFromSutCall, sameInstance(items));
 		verifyZeroInteractions(passwordEncoder);
 	}
@@ -44,7 +45,7 @@ public class UserManagementServiceImplTest {
 	@Test
 	public void testCreate() {
 		when(passwordEncoder.encode("abc")).thenReturn("***");
-		User user = new User();
+		final User user = new User();
 		sut.create(user, "abc");
 		verify(passwordEncoder).encode("abc");
 		verify(userRepository).save(any(User.class));
@@ -58,5 +59,12 @@ public class UserManagementServiceImplTest {
 		verify(userRepository).delete("100");
 		verifyNoMoreInteractions(passwordEncoder);
 		verifyNoMoreInteractions(userRepository);
+	}
+
+	@Test
+	public void testGet() {
+		final User user = new User();
+		when(userRepository.findOne("random#id")).thenReturn(user);
+		assertThat(sut.get("random#id"), IsSame.sameInstance(user));
 	}
 }
