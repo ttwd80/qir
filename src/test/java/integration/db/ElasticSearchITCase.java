@@ -12,7 +12,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import com.twistlet.qir.common.model.entity.User;
 import com.twistlet.qir.common.model.repository.UserRepository;
 
-@ContextConfiguration({ "classpath:qir-context-es-client.xml",
+@ContextConfiguration({ "classpath:test-qir-context-config.xml",
+		"classpath:qir-context-es-client.xml",
 		"classpath:qir-context-es-config.xml" })
 public class ElasticSearchITCase extends AbstractJUnit4SpringContextTests {
 

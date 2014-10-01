@@ -18,7 +18,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.twistlet.qir.common.model.service.DataInitService;
 
-@ContextConfiguration({ "classpath:selenium-test-spring-context.xml",
+@ContextConfiguration({ "classpath:test-qir-context-config.xml",
+		"classpath:selenium-test-spring-context.xml",
 		"classpath:qir-context-es-config.xml",
 		"classpath:qir-context-es-client.xml",
 		"classpath:qir-context-es-data-init.xml" })
@@ -41,8 +42,8 @@ public abstract class AbstractWebITCase extends
 		dataInitService.clear();
 		dataInitService.init();
 		webDriver = new PhantomJSDriver();
-		Options options = webDriver.manage();
-		Window window = options.window();
+		final Options options = webDriver.manage();
+		final Window window = options.window();
 		window.setSize(new Dimension(1280, 800));
 	}
 
