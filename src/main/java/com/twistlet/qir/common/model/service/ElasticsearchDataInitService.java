@@ -17,10 +17,10 @@ public class ElasticsearchDataInitService implements DataInitService {
 
 	private final UserRepository userRepository;
 	private final RoleRepository roleRepository;
-	private PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public ElasticsearchDataInitService(PasswordEncoder passwordEncoder,
+	public ElasticsearchDataInitService(final PasswordEncoder passwordEncoder,
 			final UserRepository userRepository,
 			final RoleRepository roleRepository) {
 		this.passwordEncoder = passwordEncoder;
@@ -64,7 +64,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 	private void initAdmin() {
 		final User user = new User();
 		user.setFullname("Administrator");
-		user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_ADMIN")));
+		user.setRoles(new LinkedHashSet<>(Arrays.asList("ROLE_ADMIN")));
 		user.setUsername("admin");
 		user.setPassword(passwordEncoder.encode("cefew86traqe"));
 		user.setEnabled(Boolean.TRUE);
@@ -84,7 +84,7 @@ public class ElasticsearchDataInitService implements DataInitService {
 			user.setFullname("Normal user #" + id);
 			user.setUsername(name[id - 1]);
 			user.setPassword(hashed[id - 1]);
-			user.setRoles(new LinkedHashSet<String>(Arrays.asList("ROLE_USER")));
+			user.setRoles(new LinkedHashSet<>(Arrays.asList("ROLE_USER")));
 			user.setEnabled(Boolean.TRUE);
 			userRepository.save(user);
 		}
