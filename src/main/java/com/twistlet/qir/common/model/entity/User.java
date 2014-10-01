@@ -6,7 +6,7 @@ import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "qir", type = "user")
+@Document(indexName = "#{esconfig['es.indexname']}", type = "user")
 public class User implements Serializable {
 
 	@Id
@@ -32,7 +32,7 @@ public class User implements Serializable {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
@@ -40,7 +40,7 @@ public class User implements Serializable {
 		return fullname;
 	}
 
-	public void setFullname(String fullname) {
+	public void setFullname(final String fullname) {
 		this.fullname = fullname;
 	}
 
@@ -48,7 +48,7 @@ public class User implements Serializable {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 
@@ -56,7 +56,7 @@ public class User implements Serializable {
 		return roles;
 	}
 
-	public void setRoles(Set<String> roles) {
+	public void setRoles(final Set<String> roles) {
 		this.roles = roles;
 	}
 
@@ -64,7 +64,7 @@ public class User implements Serializable {
 		return enabled;
 	}
 
-	public void setEnabled(Boolean enabled) {
+	public void setEnabled(final Boolean enabled) {
 		this.enabled = enabled;
 	}
 
