@@ -145,7 +145,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.2</version>
+			<version>1.2.0</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -217,7 +217,7 @@
 		<dependency>
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
-			<version>6.8.13</version>
+			<version>6.8.15</version>
 			<scope>compile</scope>
 		</dependency>
 
